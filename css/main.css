@@ -110,6 +110,9 @@ img {
 .labelIngresar {
     display: inline;
 }
+
+.img-center {margin:0 auto;}
+
 /* sm */
 @media (min-width: 320px) and (max-width: 767px) {
     .row {
@@ -133,6 +136,10 @@ img {
     .btncupon { width: 70%}
     .imgLogo{ width: 13%}
     .img404{  width: 50%}
+    .imgEstrellas{width:50%}
+    .imgBoleta{width:200%}
+    .selectClasificacion{width: 100%}
+
 }
 /* md */
 @media (min-width: 768px) and (max-width: 992px) {
@@ -145,6 +152,9 @@ img {
     .btncupon { width: 70%}
     .imgLogo{ width: 15%}
     .img404{  width: 35%}
+    .imgEstrellas{width:40%}
+    .imgBoleta{width:200%}
+    .selectClasificacion{width: 50%}
 }
 /* lg */
 @media (min-width: 993px) {
@@ -156,6 +166,9 @@ img {
     .btncupon { width: 40%}
     .imgLogo{ width: 15%}
     .img404{  width: 20%}
+    .imgEstrellas{width:40%}
+    .imgBoleta{width:200%}
+    .selectClasificacion{width: 30%;}
 
 }
 

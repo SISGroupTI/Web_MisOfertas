@@ -39,14 +39,14 @@
             <br>
             <br>
             <ul class="nav navbar-nav navbar-right links">
-                <li class="divider-vertical" role="presentation"><a href="ingresar.html">Ingresar </a></li>
-                <li role="presentation"><a href="crear_cuenta.html">Crear cuenta</a></li>
-                <li role="presentation"><a href="descuentos.html">Descuentos</a></li>
+                <li class="divider-vertical" role="presentation" id="liIngresar"><a href="ingresar.html">Ingresar </a></li>
+                <li role="presentation" id="liCrearCuenta"><a href="crear_cuenta.html">Crear cuenta</a></li>
+                <li role="presentation" id="liDescuentos"><a href="descuentos.html">Descuentos</a></li>
                 <li role="presentation"><a href="ayuda.html" class="custom-navbar">Ayuda</a></li>
-                <li class="dropdown">
+                <li class="dropdown" id="liMiCuenta">
                     <a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle"> Mi Cuenta<span class="caret"></span></a>
                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                        <li role="presentation"><a href="#">Cerrar sesión </a></li>
+                        <li role="presentation"><a href="#" onclick="cerrar_sesion()">Cerrar sesión </a></li>
                     </ul>
                 </li>
             </ul>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
                                 <h4> Desde $20.900</h4>
-                                <button type="button" class="btn btn-success">Ver Oferta</button>
+                                <button type="button" class="btn btn-success" onclick="location.href='valorar_oferta.html';">Ver Oferta</button>
                             </div>
                         </div>
                     </div>

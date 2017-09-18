@@ -37,7 +37,7 @@ function cerrar_sesion(){
                 // handling the promise rejection
                 function (dismiss) {
                   if (dismiss === 'timer') {
-                     window.location.href = 'index.jsp';
+                     location.reload();
                   }
                 }
             );      

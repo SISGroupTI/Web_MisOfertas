@@ -62,7 +62,7 @@ public class LoginConsumidorServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.getWriter().write("error");
         }
             
             

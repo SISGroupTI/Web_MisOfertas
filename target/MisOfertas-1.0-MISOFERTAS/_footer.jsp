@@ -1,3 +1,4 @@
+<%@ page session="true" %>
 <footer>
             <div class="footer" id="footer">
                 <div class="container">
@@ -30,6 +31,9 @@
             </div>
             <!--/.footer-->
 
+            <%
+                if(session.getAttribute("SesionNombre") == null){
+                    %>
             <div class="footer-bottom">
                 <div class="container">
                     <p class="pull-left">  2017. Mis Ofertas. Todos los derechos reservados </p>
@@ -42,6 +46,28 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>    
+                    
+                            <%
+                }else{
+                    %>
+            <div class="footer-bottom center-block">
+                <div class="container">
+                    <p class="pull-left">  2017. Mis Ofertas. Todos los derechos reservados </p>
+                    <div class="pull-right">
+                        <ul class="nav nav-pills">
+                            <li role="separator"><a href="index.jsp">Inicio</a></li>
+                            <li role="separator"><a href="ayuda.jsp">Ayuda</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>        
+                    
+                            <%
+                }
+
+                %>
+            
+            
             <!--/.footer-bottom-->
         </footer>

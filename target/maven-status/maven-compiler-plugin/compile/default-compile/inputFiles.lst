@@ -1,12 +1,15 @@
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Helpers\JsonUtils.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\LogOutConsumidorServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\TesterController.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertasServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Oferta.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Estado.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\DetalleOferta.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Escala.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\HistorialCorreo.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Producto.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\OfertaController.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\OfertaModel.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\LoginConsumidorServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Certificado.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\ConsumidorController.java

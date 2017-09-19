@@ -1,4 +1,13 @@
 <%@ page session="true" %>
+
+<%
+    if(session.getAttribute("SesionNombre") == null){
+        %>
+        
+        <%
+    }
+%>
+
 <!doctype html>
 <html>
     <head>
@@ -136,10 +145,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
                                         <img src="img/empty.png" alt="" class="img-responsive">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4 bottom-align-text">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
                                 </div>
@@ -162,10 +172,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
                                         <img src="img/empty.png" alt="" class="img-responsive">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4 bottom-align-text">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
                                 </div>
@@ -183,10 +194,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
                                         <img src="img/empty.png" alt="" class="img-responsive">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4 bottom-align-text">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
                                 </div>
@@ -209,10 +221,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
                                         <img src="img/empty.png" alt="" class="img-responsive">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4 bottom-align-text">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
                                 </div>
@@ -230,10 +243,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
                                         <img src="img/empty.png" alt="" class="img-responsive">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4 bottom-align-text">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
                                 </div>
@@ -267,7 +281,17 @@
         <script src="js/main.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/vendor/sweetalert2.min.js"></script>
-
+        <script>
+            $( document ).ready(function() {
+                
+                $.post("SelectOfertasServlet",{},function(data){
+                    console.log(data);
+                });
+                
+            });
+            
+            
+        </script>
 
     </body>
 </html>

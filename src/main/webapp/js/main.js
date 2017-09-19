@@ -31,13 +31,13 @@ function cerrar_sesion(){
             swal({
                 title: 'Sesion cerrada',
                 text: 'Redireccionando a la pagina principal',
-                timer: 2000
+                timer: 1000
               }).then(
                 function () {},
                 // handling the promise rejection
                 function (dismiss) {
                   if (dismiss === 'timer') {
-                     location.reload();
+                    window.location.href="index.jsp";
                   }
                 }
             );      

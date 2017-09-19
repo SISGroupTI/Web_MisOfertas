@@ -34,11 +34,11 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <h3>
-                Cada valoraci贸n de oferta te genera 10 puntos acumulables por mes,
-                que podr谩s cambiar en cupones de descuentos en rubros de las tiendas disponibles
+                Cada valoraci髇 de oferta te genera 10 puntos acumulables por mes,
+                que podr醩 cambiar en cupones de descuentos en rubros de las tiendas disponibles
                 <br>
                 <br>
-                <button type="button" class="btn btn-success btncupon">Descargar cup贸n</button>
+                <button type="button" class="btn btn-success btncupon">Descargar cup髇</button>
                 <br>
                 <h4>Disponible para el mes de Agosto de 2017</h4>
                 <hr>
@@ -63,7 +63,7 @@
                 <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>Mes de emisi贸n</th>
+                        <th>Mes de emisi髇</th>
                         <th>Rubros disponibles</th>
                         <th>Puntos generados</th>
                         <th>Descuento</th>
@@ -74,7 +74,7 @@
 
                     <tfoot>
                     <tr>
-                        <th>Mes de emisi贸n</th>
+                        <th>Mes de emisi髇</th>
                         <th>Rubros disponibles</th>
                         <th>Puntos generados</th>
                         <th>Descuento</th>

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class TesterController {
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-        ConsumidorController controller = new ConsumidorController();
-        Consumidor test = controller.iniciarSesion("alonso@gmail.com", "alonso");
-        System.out.println(test);
+       OfertaController oferta = new OfertaController();
+       String test = oferta.selectOfertas();
+       System.out.println(test);
                 
     }
 }

@@ -36,17 +36,17 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <h3>
-                En este sitio encontrar谩s informaci贸n sobre nuestra plataforma y m谩s.
+                En este sitio encontrar醩 informaci髇 sobre nuestra plataforma y m醩.
             </h3>
                 <br>
                <p>
-                   Mis Ofertas es una plataforma web en la que podr谩s encontrar miles de ofertas en nuestras tiendas asociadas.
-                   Te entregaremos recomendaciones de productos seg煤n tus preferencias, te recomendamos que actives la opci贸n de
-                   recibir correos desde nuestra direcci贸n al crear tu cuenta, te haremos saber la publicaci贸n de nuevas y mejores ofertas para ti
+                   Mis Ofertas es una plataforma web en la que podr醩 encontrar miles de ofertas en nuestras tiendas asociadas.
+                   Te entregaremos recomendaciones de productos seg鷑 tus preferencias, te recomendamos que actives la opci髇 de
+                   recibir correos desde nuestra direcci髇 al crear tu cuenta, te haremos saber la publicaci髇 de nuevas y mejores ofertas para ti
                </p>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 autosized text-center">
-            <h2 onclick="location.href='index.html';"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Volver al inicio</h2>
+            <h2 onclick="location.href='index.jsp';"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Volver al inicio</h2>
 
         </div>
     </div>
@@ -61,8 +61,8 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <button type="button" class="list-group-item" onclick="location.href='ingresar.html';">Ingresar</button>
-                        <button type="button" class="list-group-item" onclick="location.href='crear_cuenta.html';">Crear Cuenta</button>
+                        <button type="button" class="list-group-item" onclick="location.href='ingresar.jsp';">Ingresar</button>
+                        <button type="button" class="list-group-item" onclick="location.href='crear_cuenta.jsp';">Crear Cuenta</button>
                     </div>
                 </div>
             </div>
@@ -75,9 +75,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <button type="button" class="list-group-item" onclick="location.href='index.html';">Ofertas</button>
-                        <button type="button" class="list-group-item" onclick="location.href='ofertas.html';">Destacadas</button>
-                        <button type="button" class="list-group-item" onclick="location.href='rubros.html';">Rubros disponibles</button>
+                        <button type="button" class="list-group-item" onclick="location.href='index.jsp';">Ofertas</button>
+                        <button type="button" class="list-group-item" onclick="location.href='ofertas.jsp';">Destacadas</button>
+                        <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';">Rubros disponibles</button>
                     </div>
                 </div>
             </div>

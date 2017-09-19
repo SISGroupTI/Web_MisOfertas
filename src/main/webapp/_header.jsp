@@ -22,7 +22,6 @@
             <ul class="nav navbar-nav navbar-right links">
                 <li class="divider-vertical" role="presentation" id="liIngresar"><a href="ingresar.jsp">Ingresar </a></li>
                 <li role="presentation" id="liCrearCuenta"><a href="crear_cuenta.jsp">Crear cuenta</a></li>
-                <li role="presentation" id="liDescuentos"><a href="descuentos.jsp">Descuentos</a></li>
                 <li role="presentation"><a href="ayuda.jsp" class="custom-navbar">Ayuda</a></li>          
             </ul>
 

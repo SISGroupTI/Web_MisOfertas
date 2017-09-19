@@ -76,3 +76,8 @@ function crea_cuenta(){
     });
     
 }
+
+
+function toRubros(idRubro){
+    alert(idRubro);
+}

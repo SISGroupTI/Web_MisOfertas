@@ -16,6 +16,10 @@
         <servlet-name>SelectOfertasServlet</servlet-name>
         <servlet-class>Servlets.SelectOfertasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RubrosCantOfertasServlet</servlet-name>
+        <servlet-class>Servlets.RubrosCantOfertasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginConsumidorServlet</servlet-name>
         <url-pattern>/LoginConsumidorServlet</url-pattern>
@@ -32,15 +36,17 @@
         <servlet-name>SelectOfertasServlet</servlet-name>
         <url-pattern>/SelectOfertasServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RubrosCantOfertasServlet</servlet-name>
+        <url-pattern>/RubrosCantOfertasServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
-    </error-page> 
-
+    </error-page>
 </web-app>

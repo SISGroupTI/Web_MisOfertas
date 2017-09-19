@@ -62,12 +62,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-4 ">
-                                <div class="list-group">
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">14</span> Linea blanca</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">2</span> Alimentos</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">4</span> Servicios</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">2</span> Tecnologia</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">6</span> Deportes</button>
+                                <div class="list-group" id="listRubros">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -283,9 +279,17 @@
         <script src="js/vendor/sweetalert2.min.js"></script>
         <script>
             $( document ).ready(function() {
-                
                 $.post("SelectOfertasServlet",{},function(data){
                     console.log(data);
+                });
+                
+                $.post("RubrosCantOfertasServlet",{},function(data){
+                    var listRubros = document.getElementById("listRubros");
+                    //<button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">14</span> Linea blanca</button>
+                    $.each(data,function(key,value){
+                        var button = "<button type='button' class='list-group-item' onclick="+"toRubros("+value["ID_RUBRO"]+")"+"><span class='badge'>"+value["CANTIDAD_OFERTAS"]+"</span>"+value["DESCRIPCION_RUBRO"]+"</button>";
+                        listRubros.innerHTML += button;
+                    });
                 });
                 
             });

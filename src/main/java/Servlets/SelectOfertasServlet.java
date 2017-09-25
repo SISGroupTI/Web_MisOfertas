@@ -35,7 +35,7 @@ public class SelectOfertasServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             Controllers.OfertaController ofertaController = new OfertaController();
-            String json = ofertaController.selectOfertas();
+            String json = ofertaController.selectOfertas(); 
             out.print(json);
             out.flush();
         } catch (ClassNotFoundException ex) {

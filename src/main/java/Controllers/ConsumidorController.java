@@ -34,8 +34,13 @@ public class ConsumidorController {
                 con.setDv(setConsumidor.getString("DV"));
                 con.setCorreo(setConsumidor.getString("CORREO"));
                 con.setRecibirOferta((short) setConsumidor.getInt("RECIBIR_OFERTA"));
+                con.setContrasena(setConsumidor.getString("CONTRASENA"));
             }
-            return con;
+            if(Helpers.BCrypt.checkpw(password, con.getContrasena())){
+                return con;
+            }else{
+                return null;
+            } 
         }
         return null;
     }

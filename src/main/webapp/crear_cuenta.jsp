@@ -69,7 +69,7 @@
                     </label>
                 </div>
                 
-                <button type="button" class="btn btn-success pull-right btningresar" onclick="crea_cuenta()">Ingresar</button>
+                <button type="button" class="btn btn-success pull-right btningresar" onclick="crea_cuenta()">Crear cuenta</button>
             </form>
         </div>
     </div>

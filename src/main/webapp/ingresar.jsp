@@ -37,10 +37,11 @@
 
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
-            <form>
+            <form role="form" data-toggle="validator">
                 <div class="form-group">
                     <label for="txtIngresoCorreo">Correo</label>
-                    <input type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl">
+                    <input type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl" ata-error="Bruh, that email address is invalid" required>
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtIngresoContrasena">Contraseña</label>
@@ -68,6 +69,7 @@
 <script src="js/main.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/vendor/sweetalert2.min.js"></script>
+<script src="js/Validator.js"></script>
 
 </body>
 </html>

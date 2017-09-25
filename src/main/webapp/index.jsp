@@ -111,18 +111,67 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="panel panel-default">
-                        <div class="panel-body">
+                        <div class="panel-body" id="divPanelBodyOferta1">
                             <div class="container-fluid">
                                 <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
                                         <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
+                                        <h4> Desde $20.900</h4>
+                                        <button type="button" class="btn btn-success detailOferta">Ver Oferta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body" id="divPanelBodyOferta2">
+                            <div class="container-fluid">
+                                <div clas="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
+                                        <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
+                                        <h4> Desde $20.900</h4>
+                                        <button type="button" class="btn btn-success">Ver Oferta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="container-fluid">
+                                <div clas="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
+                                        <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
                                         <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
@@ -136,15 +185,15 @@
                         <div class="panel-body">
                             <div class="container-fluid">
                                 <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
                                         <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
                                         <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
@@ -163,15 +212,15 @@
                         <div class="panel-body">
                             <div class="container-fluid">
                                 <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
                                         <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
                                         <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
@@ -185,64 +234,15 @@
                         <div class="panel-body">
                             <div class="container-fluid">
                                 <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titleOferta">
                                         <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 imgOferta">
+                                        <img src="img/empty.png" alt="" class="img-responsive imgOfertaMenu">
                                     </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <h4> Desde $20.900</h4>
-                                        <button type="button" class="btn btn-success">Ver Oferta</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="container-fluid">
-                                <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <h4> Desde $20.900</h4>
-                                        <button type="button" class="btn btn-success">Ver Oferta</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="container-fluid">
-                                <div clas="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h4>Hasta 30% de descuento en tu segunda compra de ropa en la marca Adidas</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <img src="img/empty.png" alt="" class="img-responsive">
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-md-4 col-sm-4 col-xs-12 priceOferta">
                                         <h4> Desde $20.900</h4>
                                         <button type="button" class="btn btn-success">Ver Oferta</button>
                                     </div>
@@ -273,14 +273,30 @@
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');</script>
+        <script src="js/Helpers.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/vendor/sweetalert2.min.js"></script>
         <script>
+            
+            
             $( document ).ready(function() {
                 $.post("SelectOfertasServlet",{},function(data){
-                    console.log(data);
+                    var titles = document.getElementsByClassName("titleOferta");
+                    var imgOferta= document.getElementsByClassName("imgOferta");
+                    var priceOferta = document.getElementsByClassName("priceOferta");
+                    
+                    //console.log(data.length);
+                    var aux =(titles.length === data.length)? data.length : data.length;
+                    //console.log(aux);
+                    
+                    for(var i = 0; i<aux ;i++){
+                        titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
+                        var imagen = imgOferta[i].children;imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
+                        
+                    }
+                    
                 });
                 
                 $.post("RubrosCantOfertasServlet",{},function(data){

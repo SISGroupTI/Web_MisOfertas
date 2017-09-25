@@ -16,6 +16,7 @@ html {
     line-height: 1.4;
 }
 
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -125,8 +126,7 @@ img {
         right: 0;
     }
     img {
-        width: 250px;
-
+        width: 750px;
     }
     .autosized .label { font-size: 19px; }
     hr {
@@ -138,6 +138,7 @@ img {
     .img404{  width: 50%}
     .imgEstrellas{width:50%}
     .imgBoleta{width:200%}
+    .imgOfertaMenu{width: 330px; height: 190px}
     .selectClasificacion{width: 100%}
 
 }
@@ -154,6 +155,7 @@ img {
     .img404{  width: 35%}
     .imgEstrellas{width:40%}
     .imgBoleta{width:200%}
+    .imgOfertaMenu{width: 330px; height: 190px}
     .selectClasificacion{width: 50%}
 }
 /* lg */
@@ -168,6 +170,7 @@ img {
     .img404{  width: 20%}
     .imgEstrellas{width:40%}
     .imgBoleta{width:200%}
+    .imgOfertaMenu{width: 350px; height: 190px}
     .selectClasificacion{width: 30%;}
 
 }

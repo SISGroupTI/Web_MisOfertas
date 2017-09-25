@@ -1,7 +1,9 @@
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\RubroController.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Helpers\JsonUtils.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\LogOutConsumidorServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\TesterController.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertasServlet.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\RubroModel.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Oferta.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Estado.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\DetalleOferta.java
@@ -19,6 +21,7 @@ C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Track.j
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Permiso.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Rubro.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Trabajador.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\RubrosCantOfertasServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\ImgOferta.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Helpers\BCrypt.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Helpers\ToJson.java

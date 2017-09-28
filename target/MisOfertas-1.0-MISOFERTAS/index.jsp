@@ -288,6 +288,7 @@
                     var priceOferta = document.getElementsByClassName("priceOferta");
                     
                     //console.log(data.length);
+                    //MEJORAR CONDICION
                     var aux =(titles.length === data.length)? data.length : data.length;
                     //console.log(aux);
                     

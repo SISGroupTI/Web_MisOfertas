@@ -1,12 +1,6 @@
 <%@ page session="true" %>
 
-<%
-    if(session.getAttribute("SesionNombre") == null){
-        %>
-        
-        <%
-    }
-%>
+
 
 <!doctype html>
 <html>
@@ -287,15 +281,21 @@
                     var imgOferta= document.getElementsByClassName("imgOferta");
                     var priceOferta = document.getElementsByClassName("priceOferta");
                     
-                    //console.log(data.length);
+                    console.log(data);
                     //MEJORAR CONDICION
                     var aux =(titles.length === data.length)? data.length : data.length;
                     //console.log(aux);
                     
                     for(var i = 0; i<aux ;i++){
+                        let idOferta = data[i]["ID_OFERTA"];
                         titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
-                        var imagen = imgOferta[i].children;imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
-                        
+                        var imagen = imgOferta[i].children;
+                            imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
+                        var price = priceOferta[i].children;
+                            price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
+                            price[1].addEventListener("click", function(){
+                                alert(idOferta);
+                            }, false);
                     }
                     
                 });

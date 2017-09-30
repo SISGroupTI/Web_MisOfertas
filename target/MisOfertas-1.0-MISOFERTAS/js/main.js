@@ -1,27 +1,27 @@
 
 
 function ingresar(){
-    var correo = document.getElementById("txtIngresoCorreo").value;
-    var password = document.getElementById("txtIngresoContrasena").value;
-    
-    $.post('/MisOfertas/LoginConsumidorServlet',{
-        correo:correo,
-        password:password
-    },function(data){
-        console.log(data);
-        if(data==="error"){
-            swal(
-                'Verifica tus crendenciales',
-                'Intenta nuevamente',
-                'error'
-            );
-        }else{
-           window.location.href = "index.jsp";
-        }
-        
-    });
-   
+    let correo = document.getElementById("txtIngresoCorreo").value;
+    let password = document.getElementById("txtIngresoContrasena").value;
+    if(correo.length > 0 && password.length > 0){
+        $.post('/MisOfertas/LoginConsumidorServlet',{
+           correo:correo,
+           password:password
+        },function(data){
+           console.log(data);
+           if(data==="error"){
+               swal(
+                   'Verifica tus crendenciales',
+                   'Intenta nuevamente',
+                   'error'
+               );
+            document.getElementById("txtIngresoContrasena").value = "";
+           }else if(data==="success"){
+              window.location.href = "index.jsp";   
+           }
 
+       });   
+    }
 }
 
 function cerrar_sesion(){
@@ -81,3 +81,4 @@ function crea_cuenta(){
 function toRubros(idRubro){
     alert(idRubro);
 }
+

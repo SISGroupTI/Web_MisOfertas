@@ -53,7 +53,7 @@ public class LoginConsumidorServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("sesionLogin", consumidorLogin);
                 session.setAttribute("SesionNombre", consumidorLogin.getNombre());
-                response.getWriter().write("logueado");
+                response.getWriter().write("success");
             }
                   
             

@@ -1,4 +1,11 @@
 <%@ page session="true" %>
+
+<%
+    if(session.getAttribute("SesionNombre") == null){
+        String redirectURL = "index.jsp";
+        response.sendRedirect(redirectURL);
+    }
+%>
 <!doctype html>
 <html class="no-js" lang="">
 <head>

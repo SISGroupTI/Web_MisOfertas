@@ -12,3 +12,7 @@ function separarArray(array, chunks){
     }, []);
     return aux;
 }
+
+function separarMiles(valor){
+    return "$"+valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}

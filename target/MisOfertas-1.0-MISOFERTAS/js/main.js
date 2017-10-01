@@ -1,4 +1,22 @@
-
+function validaCorreo(value){
+    let correo = document.getElementById(value).value;
+    if(correo.length > 0){
+        $.post("/MisOfertas/VerificarCorreoConsumidorServlet",{
+            correo:correo
+        },function(data){
+            if(data ===  "invalidate"){
+                document.getElementsByClassName("btningresar")[0].disabled=true;
+                swal(
+                    'Ya existe una cuenta vinculada a este correo electronico',
+                    'solo es posible una cuenta por correo',
+                    'warning'
+                  );
+            }else if(data === "validate"){
+                document.getElementsByClassName("btningresar")[0].disabled=false;
+            }
+        });
+    }
+}
 
 function ingresar(){
     let correo = document.getElementById("txtIngresoCorreo").value;
@@ -62,7 +80,9 @@ function crea_cuenta(){
     
     var run = rut[0];
     var dv = rut[1];
-    
+       
+    validaCorreo("txtIngresoCorreo");
+   
     $.post("/MisOfertas/RegisterConsumidorServlet",{
         nombre:nombre,
         apellido:apellido,
@@ -73,6 +93,11 @@ function crea_cuenta(){
         dv:dv
     },function(data){
         console.log(data);
+        swal(
+            'Su cuenta se ha creado satisfactoriamente',
+            '',
+            'success'
+        );
     });
     
 }

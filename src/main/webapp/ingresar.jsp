@@ -71,5 +71,8 @@
 <script src="js/vendor/sweetalert2.min.js"></script>
 <script src="js/Validator.js"></script>
 
+
+
+
 </body>
 </html>

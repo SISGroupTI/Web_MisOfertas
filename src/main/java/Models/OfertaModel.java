@@ -23,5 +23,18 @@ public class OfertaModel {
         return null;
         
     }
+    public ResultSet selectOfertaPorId(Oferta oferta) throws ClassNotFoundException, SQLException{
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaId = "{call SP_SELECT_OFERTA_POR_ID_CONS(?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaId);
+        stmt.setInt(1, (int) oferta.getIdOferta());
+        stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(2);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
     
 }

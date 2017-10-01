@@ -42,4 +42,23 @@ public class ConsumidorModel {
         stmt.setInt(8, consumidor.getIsActivo());
         return stmt.execute();
     }
+    
+    public boolean consumidorVerificarExistenciaEmail(Consumidor consumidor) throws ClassNotFoundException, SQLException{
+        String spCountEmail = "{call SP_COUNT_CONSUMIDOR_CORREO(?,?)}";
+        Connection con = BD.Conexion.getConnection();
+        CallableStatement stmt = con.prepareCall(spCountEmail);
+        stmt.setString(1, consumidor.getCorreo());
+        stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet setCount = (ResultSet)stmt.getObject(2);
+        if(setCount != null){
+            while(setCount.next()){
+                if(setCount.getInt("CANTIDAD") == 0){
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+    }
 }

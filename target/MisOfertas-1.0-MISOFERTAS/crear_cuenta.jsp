@@ -38,30 +38,30 @@
 
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
-            <form>
+            <form data-toggle="validator" role="form">
                 <div class="form-group">
-                    <label for="txtCrearNombre">Nombre</label>
-                    <input type="text" class="form-control" id="txtCrearNombre" placeholder="Pedro">
+                    <label for="txtCrearNombre">Nombre*</label>
+                    <input type="text" class="form-control" id="txtCrearNombre" placeholder="Pedro" required>
                 </div>
                 <div class="form-group">
-                    <label for="txtCrearApellidos">Apellidos</label>
-                    <input type="text" class="form-control" id="txtCrearApellidos" placeholder="Piedra">
+                    <label for="txtCrearApellidos">Apellidos*</label>
+                    <input type="text" class="form-control" id="txtCrearApellidos" placeholder="Piedra" required>
                 </div>
                 <div class="form-group">
-                    <label for="txtRut">Rut</label>
-                    <input type="text" class="form-control" id="txtRut" placeholder="18607283-9">
+                    <label for="txtRut">Rut*</label>
+                    <input type="text" class="form-control" id="txtRut" placeholder="18607283-9" required>
                 </div>
                 <div class="form-group">
-                    <label for="txtIngresoCorreo">Correo</label>
-                    <input type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl">
+                    <label for="txtIngresoCorreo">Correo*</label>
+                    <input type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl" required> 
                 </div>
                 <div class="form-group">
-                    <label for="txtCrearContrasena">Contraseña</label>
-                    <input type="password" class="form-control" id="txtCrearContrasena" placeholder="*************">
+                    <label for="txtCrearContrasena">Contraseña*</label>
+                    <input type="password" class="form-control" id="txtCrearContrasena" placeholder="*************" required>
                 </div>
                 <div class="form-group">
-                    <label for="txtCrearVerificar">Verificar contraseña</label>
-                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************">
+                    <label for="txtCrearVerificar">Verificar contraseña*</label>
+                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************" required>
                 </div>
                 <div class="checkbox">
                     <label>
@@ -91,6 +91,14 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/vendor/sweetalert2.min.js"></script>
+<script src="js/Validator.js"></script>
+
+<script>
+    $("#txtIngresoCorreo").blur(function(){
+        validaCorreo("txtIngresoCorreo");
+    });
+    
+</script>
 
 </body>
 </html>

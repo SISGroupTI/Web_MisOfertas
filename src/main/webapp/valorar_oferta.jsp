@@ -39,27 +39,55 @@
                     <div class="container-fluid">
                         <div clas="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10">
-                                <h3>
-                                    Pack de 3 o 6 botellas de 1,9 litros de Ariel concentrado Power Liquid. Incluye despacho
+                                <h3 class="titleOferta">
+                                    <!--Pack de 3 o 6 botellas de 1,9 litros de Ariel concentrado Power Liquid. Incluye despacho-->
                                 </h3>
-
-
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <img src="img/empty.png" alt="" class="img-responsive">
+                                <!--<img src="img/empty.png" alt="" class="img-responsive">-->
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="img/empty.png" class="img-responsive">
+    </div>
+    <div class="item">
+        <img src="img/empty.png" class="img-responsive">
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    
+  </a>
+</div>
+                                
+                                
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-offset-0 text-center" align="center">
-                                <h4> $5.990</h4>
-                                <div class="panel panel-default panelDetalleOferta">
-                                    <div class="panel-body">
-                                        Oferta disponible hasta el dÃ­a lunes 28 de Agosto de 2017
+                                <h4 class="priceOferta"> <!--$5.990--></h4>
+                                <div class="panel panel-default panelDetalleOferta ">
+                                    <div class="panel-body titleDetalleOferta">
+                                        Oferta disponible hasta el día lunes 28 de Agosto de 2017
                                     </div>
                                 </div>
                                 <div>
                                     <h4><b>Valora esta oferta</b></h4>
-                                    <img src="img/3-star-rating.jpg" alt="" class="img-responsive imgEstrellas center-block" onclick="mostrarModal()">
+                                    <img src="img/3-star-rating.jpg" alt="" class="img-responsive imgEstrellas center-block" onclick="mostrarModal()">   
                                 </div>
 
                             </div>
@@ -102,7 +130,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs 12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <hr class="style3">
             <hr class="style3">
         </div>
@@ -224,16 +252,42 @@
 
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/vendor/sweetalert2.min.js"></script>
-
+<script src="js/Helpers.js"></script>
 <script>
     function mostrarModal(){
-        $('#myModal').modal('show');
+            $('#myModal').modal('show');
     }
+        
+    $(document).ready(function() {
+        const oferta = findGetParameter("Oferta");
+        $.post("SelectOfertaPorIdServlet",{
+            idOferta:oferta
+        },function(data){
+            console.log(data);
+            
+            if(data.length>0){
+                const titulo = document.getElementsByClassName("titleOferta");
+                const precio = document.getElementsByClassName("priceOferta");
+                const detalle = document.getElementsByClassName("titleDetalleOferta");
+                const detalleCaracteristicas = document.getElementsByClassName("panelDetalleOferta");
+                
+                titulo[0].textContent = data[0]["TITULO_OFERTA"];
+                precio[0].textContent = separarMiles(data[0]["PRECIO"]);
+                
+                
+                obtenerFecha(data[0]["FECHA_INICIO"]);
+            }
+    });
+        
+        
+    });
+    
+    
 
 </script>
 

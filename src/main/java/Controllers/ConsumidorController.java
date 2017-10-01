@@ -63,4 +63,12 @@ public class ConsumidorController {
         
     }
     
+    public boolean verificarCorreo(String correo) throws ClassNotFoundException, SQLException{
+        Consumidor consumidor = new Consumidor();
+        consumidor.setCorreo(correo);
+        
+        ConsumidorModel model = new ConsumidorModel();
+        return model.consumidorVerificarExistenciaEmail(consumidor);
+    }
+    
 }

@@ -7,12 +7,12 @@ import java.sql.SQLException;
 public class TesterController {
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
        ConsumidorController cont = new ConsumidorController();
-       Consumidor con = cont.iniciarSesion("alonso@gmail.com", "alonso");
-       if(con == null){
-           System.out.println("nulo :c");
-       } else{
-           System.out.println(con.getNombre());
-       }
+        boolean con = cont.verificarCorreo("alonso@gmail.com");
+        if(con){
+            System.out.println("valido");
+        }else{
+            System.out.println("no valido");
+        }
        
                 
     }

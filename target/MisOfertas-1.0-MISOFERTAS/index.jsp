@@ -277,9 +277,9 @@
             
             $( document ).ready(function() {
                 $.post("SelectOfertasServlet",{},function(data){
-                    var titles = document.getElementsByClassName("titleOferta");
-                    var imgOferta= document.getElementsByClassName("imgOferta");
-                    var priceOferta = document.getElementsByClassName("priceOferta");
+                    const titles = document.getElementsByClassName("titleOferta");
+                    const imgOferta= document.getElementsByClassName("imgOferta");
+                    const priceOferta = document.getElementsByClassName("priceOferta");
                     
                     console.log(data);
                     //MEJORAR CONDICION
@@ -294,7 +294,9 @@
                         var price = priceOferta[i].children;
                             price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
                             price[1].addEventListener("click", function(){
-                                alert(idOferta);
+                                //alert(idOferta);
+                                window.location.href = 'valorar_oferta.jsp?Oferta='+idOferta;
+        
                             }, false);
                     }
                     

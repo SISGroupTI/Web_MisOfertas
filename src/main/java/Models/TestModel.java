@@ -13,10 +13,9 @@ public class TestModel {
     public static void main(String[]args){
         
         try {
-            Entity.Oferta oft = new Oferta();
-            oft.setIdOferta(2);
-            OfertaModel model = new OfertaModel();
-            ResultSet set = model.selectOfertaPorId(oft);
+            Consumidor consumidor = new Consumidor();consumidor.setIdConsumidor(1);
+            CuponModel model = new CuponModel();
+            ResultSet set = model.selectCuponesGeneradorPorConsumidor(consumidor);
             if(set!= null){
                 System.out.println("DATOS");
             }else{

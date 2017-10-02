@@ -11,7 +11,7 @@
         <div class="navbar-header">
             <br>
             <br>
-            <img src="img/logos/MisOfertas-sinLetras.png" alt="" class="imgLogo" align="left">
+            <a href="index.jsp"><img src="img/logos/MisOfertas-sinLetras.png" alt="" class="imgLogo" align="left"></a>
             <a href="index.jsp" class="navbar-brand navbar-link">Mis Ofertas </a>
             <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 

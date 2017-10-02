@@ -93,12 +93,7 @@
 <script src="js/vendor/sweetalert2.min.js"></script>
 <script src="js/Validator.js"></script>
 
-<script>
-    $("#txtIngresoCorreo").blur(function(){
-        validaCorreo("txtIngresoCorreo");
-    });
-    
-</script>
+
 
 </body>
 </html>

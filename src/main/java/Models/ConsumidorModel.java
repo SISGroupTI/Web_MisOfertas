@@ -59,6 +59,5 @@ public class ConsumidorModel {
             }
         }
         return false;
-        
     }
 }

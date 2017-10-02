@@ -47,7 +47,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <!--<img src="img/empty.png" alt="" class="img-responsive">-->
-                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

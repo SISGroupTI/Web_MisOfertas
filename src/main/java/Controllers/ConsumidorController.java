@@ -23,7 +23,10 @@ public class ConsumidorController {
         consumidor.setContrasena(password);
         
         ConsumidorModel model = new ConsumidorModel();
+        //SP INICIAR SESION
         ResultSet setConsumidor = model.consumidorIniciarSesion(consumidor);
+        
+        
         if(setConsumidor != null){
             Consumidor con = new Consumidor();
             while(setConsumidor.next()){

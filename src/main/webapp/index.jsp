@@ -281,7 +281,7 @@
                     
                     console.log(data);
                     //MEJORAR CONDICION
-                    var aux =(titles.length === data.length)? data.length : data.length;
+                    const aux =(titles.length === data.length)? data.length : data.length;
                     //console.log(aux);
                     
                     for(var i = 0; i<aux ;i++){

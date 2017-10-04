@@ -53,6 +53,7 @@ public class LoginConsumidorServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("sesionLogin", consumidorLogin);
                 session.setAttribute("SesionNombre", consumidorLogin.getNombre());
+                session.setAttribute("idConsumidor", Long.toString(consumidorLogin.getIdConsumidor()));
                 response.getWriter().write("success");
             }
                   

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class TesterController {
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-       ConsumidorController cont = new ConsumidorController();
-        boolean con = cont.verificarCorreo("alonso@gmail.com");
-        if(con){
+        CuponController con = new CuponController();
+        String aux = con.selectCuponesGeneradosPorConsumidor(2);
+        if(aux != ""){
             System.out.println("valido");
         }else{
             System.out.println("no valido");

@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="datatableDescuentos" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Mes de emisión</th>
@@ -125,12 +125,30 @@
 
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/vendor/sweetalert2.min.js"></script>
-
+<script src="js/main.js"></script>
+<script>
+    $( document ).ready(function() {
+        $.post("CuponesGeneradosConsumidorServlet",{
+        },function(data){
+            if(data !== null){
+                console.log(data);
+                const tabla = document.getElementById("datatableDescuentos");
+                const tbody = tabla.getElementsByTagName("tbody");
+                for(i in data){
+                    const fila = document.createElement("tr");
+                    
+                }
+                
+            }
+        }); 
+    });
+    
+</script>
 
 </body>
 </html>

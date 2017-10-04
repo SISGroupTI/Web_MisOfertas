@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,11 +36,16 @@ public class CuponesGeneradosConsumidorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
+        
+        
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            int idConsumidor = Integer.parseInt(request.getParameter("idConsumidor"));
+            HttpSession session = request.getSession(true);
+            
+            int idConsumidor = Integer.parseInt((String)session.getAttribute("idConsumidor"));
             Controllers.CuponController cuponController = new CuponController();
             String json;
             try {
@@ -50,10 +56,7 @@ public class CuponesGeneradosConsumidorServlet extends HttpServlet {
                 Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-            
-            
+            }       
         }
     }
 

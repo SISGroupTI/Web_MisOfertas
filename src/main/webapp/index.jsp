@@ -271,7 +271,24 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/vendor/sweetalert2.min.js"></script>
         <script>
-            
+            /*
+             * ----BORRAR DESPUES-----------
+             * 
+             * para consultar y procesar informacion desde servlets se debe invocar utilizando
+             * consultas ajax por jquery
+             * 
+             * $.post("rutaServlet",{
+             *  //PARAMETROS A ENVIAR
+             *     parametro1: valor, // el nombre del parametro debe ser igual al nombre del parametro que se obtiene desde el servlet
+             *     parametro2:valor2
+             *     
+             * 
+             * },function(data){
+             *      //data = corresponde al objeto de respuesta luego de ejecutar el servlet
+             *      console.log(data); //permite ver el contenido
+             * });
+             * 
+             */
             
             $( document ).ready(function() {
                 $.post("SelectOfertasServlet",{},function(data){

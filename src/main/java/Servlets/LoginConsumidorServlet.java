@@ -37,7 +37,13 @@ public class LoginConsumidorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /*
+         este metodo processRequest, permite agilizar y ayudar con el trabajo de las peticiones post y get ajax que se realizan
+        desde la plataforma, con el metodo request.getParameter("<nombreDelParametro>") se obtiene la informacion enviada
+        a este servlet
         
+        
+        */
         
         try {
             String correo = request.getParameter("correo");
@@ -45,16 +51,24 @@ public class LoginConsumidorServlet extends HttpServlet {
             Controllers.ConsumidorController consumidorController = new ConsumidorController();
             Entity.Consumidor consumidorLogin = consumidorController.iniciarSesion(correo, password);
             
+            //Especificacion del contenido de la respuesta al invocar este servlet
             response.setContentType("text/plain");
+            //Seteo de la codificacion de caracteres
             response.setCharacterEncoding("UTF-8");
             if(consumidorLogin == null){
-                response.getWriter().write("error");
+                response.getWriter().write("error"); //escritura o respuesta que se envia
             }else{
-                HttpSession session = request.getSession();
-                session.setAttribute("sesionLogin", consumidorLogin);
+                HttpSession session = request.getSession(); // Clase que maneja las sesiones
+                /*
+                    Se setean los atributos luego de realizar y validar el login del consumidor
+                    donde se ejecuta en el controlador luego al modelo
+                    
+                session.setAtribute("<nombreAtributo>",dato);
+                */
+                session.setAttribute("sesionLogin", consumidorLogin); //
                 session.setAttribute("SesionNombre", consumidorLogin.getNombre());
                 session.setAttribute("idConsumidor", Long.toString(consumidorLogin.getIdConsumidor()));
-                response.getWriter().write("success");
+                response.getWriter().write("success"); //Respuesta a la invocacion
             }
                   
             

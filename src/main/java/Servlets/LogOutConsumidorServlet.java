@@ -33,7 +33,7 @@ public class LogOutConsumidorServlet extends HttpServlet {
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         if(request.getSession(false)!= null){
-            request.getSession().invalidate();
+            request.getSession().invalidate(); // eliminacion de las sesiones creadas
              response.getWriter().write("logout");
         }
         

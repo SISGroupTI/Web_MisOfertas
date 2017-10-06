@@ -37,21 +37,33 @@ public class CuponesGeneradosConsumidorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        /*
+        para las respuesta que sean de tipo JSON se debe especificar como contenttype "application/json",
+        para que el formato sea de jsonarray por defecto 
+        */
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
         
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession(true); // se obtiene la sesion
+            
+            /*
+                para obtener un parametro del array de sesion creado al momento de iniciar sesion
+                por ejemplo, se debe realizar de la siguiente forma
+                session.getAttribute("<nombreAtributo>") = obtiene un object que debe ser casteado segun sea necesario
+            
+            */
+            //En este caso se castea primero a String para luego parsear el String que se reconoce que corresponde al ID del consumidor
+ 
             
             int idConsumidor = Integer.parseInt((String)session.getAttribute("idConsumidor"));
             Controllers.CuponController cuponController = new CuponController();
             String json;
             try {
                 json = cuponController.selectCuponesGeneradosPorConsumidor(idConsumidor);
-                out.write(json);
-                out.flush();
+                out.write(json); //Impresion del string json con los datos del resultset ya convertidos a string desde el controlador
+                out.flush(); // cierra la impresion
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

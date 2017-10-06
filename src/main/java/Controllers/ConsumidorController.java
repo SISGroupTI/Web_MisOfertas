@@ -10,6 +10,19 @@ import java.util.List;
 import jdk.nashorn.internal.ir.ObjectNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
+
+/*
+
+    Esta clase es el intermediario entre los servlets(peticiones del usuario) y modelo(peticiones y respuestas de la bd)
+    Aca se instancian las clases si llega a ser necesario para enviar a los modelos
+    
+    Para efectos de retorno de consultas selects, el objeto que devuelve la clase modelo es de tipo resultset
+    lo que en esta clase es transformada a un string json con los registros(filas) como un json y el indice respectivo,
+    hay que considerar que las fechas deben ser tratadas desde la base de datos.
+
+*/
+
+
 public class ConsumidorController {
     
     public ConsumidorController(){

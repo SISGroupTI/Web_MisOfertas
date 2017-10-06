@@ -35,9 +35,15 @@ public class RegisterConsumidorServlet extends HttpServlet {
             throws ServletException, IOException {
        
         try {
+            /*
+                Se obtienen los datos necesarios para la creacion de la cuenta
+                nombre,apellidos,correo,contraseña,recibeOferta,rut,dv
+            */
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
             String correo = request.getParameter("correo");
+            //Clase Helper.BCrypyt que permite generar el cifrado de la contraseña
+            //Helpers.BCrypt.hashpw("<contraseñaNoCifrada>", Helpers.BCrypt.gensalt());
             String contrasena = Helpers.BCrypt.hashpw(request.getParameter("contrasena"), Helpers.BCrypt.gensalt());
             int recibeOferta = Integer.parseInt(request.getParameter("recibeOferta"));
             int rut = Integer.parseInt(request.getParameter("run"));
@@ -49,6 +55,7 @@ public class RegisterConsumidorServlet extends HttpServlet {
             
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
+            //Falta verificacion
             response.getWriter().write("hola");
             
         } catch (SQLException ex) {

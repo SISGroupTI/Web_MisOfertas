@@ -23,10 +23,6 @@
 
     </head>
     <body>
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
 
 <jsp:include page="_header.jsp"></jsp:include>
 
@@ -43,9 +39,9 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 ">
                                 <div class="list-group">
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';" ><span class="badge">14</span> Linea blanca</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">2</span> Alimentos</button>
-                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">4</span> Servicios</button>
+                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';" ><span class="badge lineaBlanca">14</span> Linea blanca</button>
+                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge alimentos">2</span> Alimentos</button>
+                                    <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge servicios">4</span> Servicios</button>
                                 </div>
                             </div>
                         </div>
@@ -245,6 +241,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-2 col-sm-4 col-xs-12 pull-right">
@@ -298,7 +295,7 @@
                     
                     console.log(data);
                     //MEJORAR CONDICION
-                    const aux =(titles.length === data.length)? data.length : data.length;
+                    const aux =(titles.length === data.length)? data.length : titles.length;
                     //console.log(aux);
                     
                     for(var i = 0; i<aux ;i++){

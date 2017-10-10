@@ -104,6 +104,32 @@ function crea_cuenta(){
 
 
 function toRubros(idRubro){
-    alert(idRubro);
+    var id = idRubro;
+    window.location.href='rubros.jsp?Id='+id;
+    /*$.post("/MisOfertas/SelectOfertasPorRubroServelet",
+        {idRubro:id},
+    function(data){
+        console.log(data);
+        
+        console.log("hola data")
+        const titles = document.getElementsByClassName("titleOferta");
+        const imgOferta= document.getElementsByClassName("imgOferta");
+        const priceOferta = document.getElementsByClassName("priceOferta");
+        const aux =(titles.length === data.length)? data.length : titles.length;
+            //console.log(aux);
+            for(var i = 0; i<aux ;i++){
+                let idOferta = data[i]["ID_OFERTA"];
+                titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
+                    var imagen = imgOferta[i].children;
+                        imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
+                    var price = priceOferta[i].children;
+                        price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
+                        price[1].addEventListener("click", function(){
+                        //alert(idOferta);
+                        window.location.href = 'valorar_oferta.jsp?Oferta='+idOferta;
+                }, false);
+        }
+    });*/
+    
 }
 

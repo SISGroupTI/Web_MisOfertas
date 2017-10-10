@@ -2,6 +2,7 @@
 package Models;
 
 import Entity.Oferta;
+import Entity.Rubro;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,6 +30,21 @@ public class OfertaModel {
         CallableStatement stmt = con.prepareCall(spSelectOfertaId);
         stmt.setInt(1, (int) oferta.getIdOferta());
         stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(2);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
+    
+    public ResultSet selectOfertaPorRubro(Rubro rubro) throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaRubro = "{call SP_SELECT_OFERTA_POR_RUBRO(?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaRubro);
+        stmt.setInt(1, (int) rubro.getIdRubro());
+        stmt.registerOutParameter(2,OracleTypes.CURSOR);
         stmt.execute();
         ResultSet set = (ResultSet)stmt.getObject(2);
         if(set != null){

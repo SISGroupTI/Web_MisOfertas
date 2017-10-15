@@ -6,3 +6,6 @@ hr.style3 {
 .panelDetalleOferta {
     background:#c1c4ce;}
 
+.styleImg{
+    width:auto;height: 400px;max-width:100%;max-height:100%;
+}

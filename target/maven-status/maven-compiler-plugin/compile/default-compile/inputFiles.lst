@@ -37,6 +37,7 @@ D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Helpers\BCrypt.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Oferta.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Models\ConsumidorModel.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RegisterConsumidorServlet.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\UploadServelet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\BD\TestConnection.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\CuponesGeneradosConsumidorServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Modulo.java

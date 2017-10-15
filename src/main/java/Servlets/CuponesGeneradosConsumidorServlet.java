@@ -64,9 +64,7 @@ public class CuponesGeneradosConsumidorServlet extends HttpServlet {
                 json = cuponController.selectCuponesGeneradosPorConsumidor(idConsumidor);
                 out.write(json); //Impresion del string json con los datos del resultset ya convertidos a string desde el controlador
                 out.flush(); // cierra la impresion
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
             }       
         }

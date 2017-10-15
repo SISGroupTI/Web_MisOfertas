@@ -135,13 +135,20 @@
     $( document ).ready(function() {
         $.post("CuponesGeneradosConsumidorServlet",{
         },function(data){
+                            console.log(data);
+
             if(data !== null){
                 console.log(data);
                 const tabla = document.getElementById("datatableDescuentos");
                 const tbody = tabla.getElementsByTagName("tbody");
                 for(i in data){
                     const fila = document.createElement("tr");
-                    
+                    const mesEmision = document.createElement("td");mesEmision.innerHTML=data[i]["FECHA_EMISION"];
+                    const rubros = document.createElement("td");
+                    const puntos = document.createElement("td");
+                    const descuento = document.createElement("td");
+                    const tope = document.createElement("td");
+                    const ver = document.createElement("button");                                 
                 }
                 
             }

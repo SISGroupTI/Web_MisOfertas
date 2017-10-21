@@ -1,5 +1,6 @@
 
 package Controllers;
+import Entity.Consumidor;
 import Entity.Oferta;
 import Entity.Rubro;
 import Models.OfertaModel;
@@ -32,6 +33,29 @@ public class OfertaController {
         String json = Helpers.JsonUtils.convertResultSetToJson(serOfertas);
         return json;
     }
-    
-    
+    public String selectOfertaDestacada(int idConsumidor) throws ClassNotFoundException, SQLException
+    {
+        Consumidor consumidor = new Consumidor();
+        consumidor.setIdConsumidor(idConsumidor);
+        OfertaModel modelOferta = new OfertaModel();
+        ResultSet serOfertas = modelOferta.selectOfertaDestacada(consumidor);
+        String json = Helpers.JsonUtils.convertResultSetToJson(serOfertas);
+        return json;
+    }
+    public String selectImagenesOferta(Long idOferta) throws ClassNotFoundException, SQLException
+    {
+        Entity.Oferta oferta = new Oferta();
+        oferta.setIdOferta(idOferta);
+        OfertaModel modelOferta = new OfertaModel();
+        ResultSet setOfertas = modelOferta.selectImagenOferta(oferta);
+        String json = Helpers.JsonUtils.convertResultSetToJson(setOfertas);
+        return json;
+    }
+    public String selectOfertaDestacadaGeneral() throws ClassNotFoundException, SQLException
+    {
+        OfertaModel modelOferta = new OfertaModel();
+        ResultSet serOfertas = modelOferta.selectOfertaDestacadaGeneral();
+        String json = Helpers.JsonUtils.convertResultSetToJson(serOfertas);
+        return json;
+    }
 }

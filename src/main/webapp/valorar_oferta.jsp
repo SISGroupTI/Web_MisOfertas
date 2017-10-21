@@ -34,6 +34,10 @@
 
 
             <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="index.jsp">Home</a></li>
+                    <li class="breadcrumb-item active">Oferta</li>
+                </ol>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
@@ -44,7 +48,7 @@
                                 <div class="container-fluid">
                                     <div clas="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10">
-                                            <h3 class="titleOferta">
+                                            <h3 class="tituloOferta">
                                                 <!--Pack de 3 o 6 botellas de 1,9 litros de Ariel concentrado Power Liquid. Incluye despacho-->
                                             </h3>
                                         </div>
@@ -54,20 +58,11 @@
                                             <!--<img src="img/empty.png" alt="" class="img-responsive">-->
                                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                                 <!-- Indicators -->
-                                                <ol class="carousel-indicators">
-                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                                <ol class="carousel-indicators" id="cantidadImagenes">
                                                 </ol>
 
                                                 <!-- Wrapper for slides -->
-                                                <div class="carousel-inner" role="listbox">
-                                                    <div class="item active">
-                                                        <img src="img/empty.png" class="img-responsive">
-                                                    </div>
-                                                    <div class="item">
-                                                        <img src="img/empty.png" class="img-responsive">
-                                                    </div>
+                                                <div class="carousel-inner" id="imagenesCarouser" role="listbox" >
                                                 </div>
 
                                                 <!-- Controls -->
@@ -84,7 +79,7 @@
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-offset-0 text-center" align="center">
-                                            <h4 class="priceOferta"> <!--$5.990--></h4>
+                                            <h4 class="precioOferta"> <!--$5.990--></h4>
                                             <div class="panel panel-default panelDetalleOferta ">
                                                 <div class="panel-body titleDetalleOferta">
                                                     Oferta disponible hasta el <h5 class="fechaTermino"></h5>
@@ -127,7 +122,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -136,7 +130,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -188,14 +181,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-2 col-sm-4 col-xs-12 pull-right">
-                        <a href="#"> Ver más...</a>
+                        <!--<a href="#"> Ver más...</a>-->
 
                     </div>
                 </div>
             </div>
             <br>
-
-
             <!-- MODAL CONTENT !-->
             <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
                 <div class="modal-dialog" role="document">
@@ -268,15 +259,9 @@
             function mostrarModal(selected) {
                 const idPuntuacion = document.getElementsByClassName("idPuntuacion");
                 idPuntuacion[0].textContent = selected;
-                //console.log("selected-->"+selected);
-                //const idOferta = document.getElementsByClassName("idOferta"); 
-                //console.log("idOferta-->"+idOferta[0].textContent);
-                //console.log("idConsumidor-->"+<%--<%=session.getAttribute("idConsumidor")%>--%>);
                 $('#myModal').modal('show');
             }
-
-            function sendValoracion()
-            {
+            function sendValoracion(){
                 var files = $('#upload').fileinput('getFileStack')[0]; // returns file list selected
                 const idOferta = document.getElementsByClassName("idOferta");
                 const idPuntuacion = document.getElementsByClassName("idPuntuacion");
@@ -298,34 +283,9 @@
                 data.append('idPuntuacion',idPuntuacion[0].textContent);
                 xhr.open('POST', './RegistrarValoracionServelet');
                 xhr.send(data);
-                console.log(files);
+                
+                $('#myModal').modal('hide'); 
             }
-
-            $(document).ready(function () {
-                const oferta = findGetParameter("Oferta");
-                $.post("SelectOfertaPorIdServlet", {
-                    idOferta: oferta
-                }, function (data) {
-                    console.log(data);
-
-                    if (data.length > 0) {
-                        const titulo = document.getElementsByClassName("titleOferta");
-                        const precio = document.getElementsByClassName("priceOferta");
-                        const modaltitle = document.getElementsByClassName("modal-title");
-                        const descripcion = document.getElementsByClassName("descripcion");
-                        const idOferta = document.getElementsByClassName("idOferta");                            
-                        const fechaTermino = document.getElementsByClassName("fechaTermino");
-                        const condiciones = document.getElementsByClassName("condiciones");
-                        modaltitle[0].textContent = data[0]["TITULO_OFERTA"];
-                        titulo[0].textContent = data[0]["TITULO_OFERTA"];
-                        precio[0].textContent = separarMiles(data[0]["PRECIO"]);
-                        fechaTermino[0].textContent = data[0]["FECHA_FINALZACION"];
-                        condiciones[0].textContent = data[0]["CONDICIONES"];
-                        descripcion[0].textContent = data[0]["DESCRIPCION_OFERTA"];
-                        idOferta[0].textContent = data[0]["ID_OFERTA"];
-                    }
-                });
-            });
             $("#upload").fileinput({
                 previewFileType: "image",
                 browseClass: "btn btn-primary",
@@ -340,32 +300,112 @@
                 showUpload: false,
                 minFileCount: 1,
                 maxFileCount: 1,
-                uploadAsync: true,
+                uploadAsync: true
                 //allowedFileTypes: ['*.jpg']
             });
             $(document).ready(function () {
+                const oferta = findGetParameter("Oferta");
+                const slides = document.getElementById("cantidadImagenes");
+                const imagenesCarrousel = document.getElementById("imagenesCarouser");
+                $.post("SelectImagenesOfertaServlet",{
+                    idOferta: oferta
+                },function(data){
+                    var cantidad = data.length;
+                    console.log(slides);
+                    
+                    for (var i = 0; i < cantidad; i++) {
+                        var li = document.createElement("li");
+                        var div = document.createElement("div");
+                        
+                        li.setAttribute("data-target",'#carousel-example-generic');
+                        li.setAttribute("data-slide-to",i);                
+                        
+                        if(i===0){
+                            div.setAttribute("class","item active");
+                            li.setAttribute("class","active");
+                        }
+                        else{
+                            div.setAttribute("class","item");
+                        }
+                        var img = document.createElement("img");
+                        var ruta = data[i]['IMAGEN'];
+                        img.setAttribute("src","MostrarImagenServlet?imageId="+ruta);
+                        img.setAttribute("class","img-responsive");
+                        div.appendChild(img);
+                        
+                        slides.appendChild(li);
+                        imagenesCarrousel.appendChild(div);
+                    }
+                });
+                $.post("SelectOfertaPorIdServlet", {
+                    idOferta: oferta
+                }, function (data) {
+                    console.log(data);
+                    if (data.length > 0) {
+                        const titulo = document.getElementsByClassName("tituloOferta");
+                        const precio = document.getElementsByClassName("precioOferta");
+                        const modaltitle = document.getElementsByClassName("modal-title");
+                        const descripcion = document.getElementsByClassName("descripcion");
+                        const idOferta = document.getElementsByClassName("idOferta");                            
+                        const fechaTermino = document.getElementsByClassName("fechaTermino");
+                        const condiciones = document.getElementsByClassName("condiciones");
+                        modaltitle[0].textContent = data[0]["TITULO_OFERTA"];
+                        titulo[0].textContent = data[0]["TITULO_OFERTA"];
+                        precio[0].textContent = separarMiles(data[0]["PRECIO"]);
+                        fechaTermino[0].textContent = data[0]["FECHA_FINALZACION"];
+                        condiciones[0].textContent = data[0]["CONDICIONES"];
+                        descripcion[0].textContent = data[0]["DESCRIPCION_OFERTA"];
+                        idOferta[0].textContent = data[0]["ID_OFERTA"];
+                        
+                        // LOAD CARROUSEL
+                        
+                    }
+                });
                 $.post("SelectOfertasServlet", {}, function (data) {
                     const titles = document.getElementsByClassName("titleOferta");
                     const imgOferta = document.getElementsByClassName("imgOferta");
                     const priceOferta = document.getElementsByClassName("priceOferta");
-
+                    console.log(priceOferta);
                     console.log(data);
                     //MEJORAR CONDICION
-                    const aux = (titles.length === data.length) ? data.length : data.length;
+                    const aux = (titles.length === data.length) ? data.length : titles.length;
                     //console.log(aux);
 
-                    for (var i = 0; i < aux; i++) {
+                    for (var i = 0; i < 2; i++) {
+                        var idRubro = data[i]["ID_RUBRO"];
                         let idOferta = data[i]["ID_OFERTA"];
                         titles[i].innerHTML = "<h4>" + data[i]["TITULO_OFERTA"] + "</h4>";
                         var imagen = imgOferta[i].children;
-                        imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
+                        imagen[0].src = "MostrarImagenServlet?imageId="+data[i]["IMAGEN"];
                         var price = priceOferta[i].children;
-                        price[0].innerHTML = "<h4>" + separarMiles(data[i]["PRECIO"]) + "</h4>";
-                        price[1].addEventListener("click", function () {
-                            //alert(idOferta);
-                            window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
-
-                        }, false);
+                        //console.log(price);
+                        price[0].innerHTML = "<h4> Desde: " + separarMiles(data[i]["PRECIO"]) + "</h4>";
+                        <%
+                            if(session.getAttribute("idConsumidor")==null){
+                        %>
+                            price[1].addEventListener("click", function () {
+                                window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
+                            }, false);
+                        <%
+                            }else{
+                        %>
+                            price[1].addEventListener("click", function () {
+                                window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
+                                // aqui se registrara el tracking
+                            }, false);
+                            price[1].addEventListener("click",function(){
+                                var id =<%=session.getAttribute("idConsumidor")%>
+                                $.post("TrackOfertaServlet",{
+                                  idOferta: idOferta,
+                                  idConsumidor:id,
+                                  idRubro: idRubro
+                                },function(data){
+                                   console.log(data);
+                                });
+                            },false);
+                        <%
+                            }
+                        %>
                     }
 
                 });

@@ -105,31 +105,34 @@ function crea_cuenta(){
 
 function toRubros(idRubro){
     var id = idRubro;
+   
     window.location.href='rubros.jsp?Id='+id;
-    /*$.post("/MisOfertas/SelectOfertasPorRubroServelet",
-        {idRubro:id},
-    function(data){
-        console.log(data);
-        
-        console.log("hola data")
-        const titles = document.getElementsByClassName("titleOferta");
-        const imgOferta= document.getElementsByClassName("imgOferta");
-        const priceOferta = document.getElementsByClassName("priceOferta");
-        const aux =(titles.length === data.length)? data.length : titles.length;
-            //console.log(aux);
-            for(var i = 0; i<aux ;i++){
-                let idOferta = data[i]["ID_OFERTA"];
-                titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
-                    var imagen = imgOferta[i].children;
-                        imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
-                    var price = priceOferta[i].children;
-                        price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
-                        price[1].addEventListener("click", function(){
-                        //alert(idOferta);
-                        window.location.href = 'valorar_oferta.jsp?Oferta='+idOferta;
-                }, false);
-        }
-    });*/
-    
+     
 }
 
+function toRubrosRegistrarTrack(idRubro,idConsumidor)
+{
+    var id = idRubro;
+    var idCons = idConsumidor;
+    //alert("idRubro: "+id+" idCons"+idCons);
+    $.post("/MisOfertas/TrackRubroServlet",{
+        idRubro:id,
+        idConsumidor:idCons
+    },function(data){
+        console.log(data);
+    });
+    window.location.href='rubros.jsp?Id='+id;
+}
+
+function mostrarDescuento(idCertificado)
+{
+    //alert(""+idCertificado);
+    $.post("/MisOfertas/MostrarDescuentoServlet",{
+        idCertificado:idCertificado
+    },function(data){
+        
+        console.log("esta es mi data "+ data);
+        //window.open('data:C:/Users/Ian Cardenas/AppData/Local/Temp/descuento20171019014424.pdf','_blank');
+        //window.open("sourceMappingURL='C:/Users/Ian Cardenas/AppData/Local/Temp/descuento20171019014424.pdf'",'_blank');
+    });
+}

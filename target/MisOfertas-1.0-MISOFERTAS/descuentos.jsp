@@ -35,6 +35,10 @@
 
 
 <div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="index.jsp">Home</a></li>
+        <li class="breadcrumb-item active">Descuentos</li>
+    </ol>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 autosized text-center">
             <h2>Mis Cupones</h2>
@@ -45,9 +49,9 @@
                 que podrás cambiar en cupones de descuentos en rubros de las tiendas disponibles
                 <br>
                 <br>
-                <button type="button" class="btn btn-success btncupon">Descargar cupón</button>
+                <button type="button" class="btn btn-success btncupon" id="descargarCupon">Descargar cupón</button>
                 <br>
-                <h4>Disponible para el mes de Agosto de 2017</h4>
+                <h4 id="fechaActual">Disponible para el mes de Agosto de 2017</h4>
                 <hr>
             </h3>
         </div>
@@ -91,25 +95,6 @@
                     </tfoot>
 
                     <tbody>
-                    <tr>
-                        <td>29 de Junio 2017</td>
-                        <td>Alimentos</td>
-                        <td>90</td>
-                        <td>5%</td>
-                        <td>$10.000</td>
-
-                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-search"></span></button></p></td>
-                    </tr>
-
-                    <tr>
-                        <td>30 de Julio 2017</td>
-                        <td>Alimentos, Electronica, Linea Blanca</td>
-                        <td>500</td>
-                        <td>10%</td>
-                        <td>$15.000</td>
-
-                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-search"></span></button></p></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -133,24 +118,46 @@
 <script src="js/main.js"></script>
 <script>
     $( document ).ready(function() {
+        var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                                      ];
+        var date = new Date();
+        var fechaActual = document.getElementById("fechaActual");
+        fechaActual.innerHTML="Disponible para el mes de "+monthNames[date.getMonth()]+" de "+date.getUTCFullYear();
         $.post("CuponesGeneradosConsumidorServlet",{
         },function(data){
-                            console.log(data);
-
             if(data !== null){
                 console.log(data);
                 const tabla = document.getElementById("datatableDescuentos");
                 const tbody = tabla.getElementsByTagName("tbody");
-                for(i in data){
+                const boton = document.getElementById("descargarCupon");
+                boton.addEventListener("click", function () {
+                    mostrarDescuento(data[0]["ID_CERTIFICADO"]);
+                }, false);
+                for(var i = 1; i < data.length; i++){
                     const fila = document.createElement("tr");
-                    const mesEmision = document.createElement("td");mesEmision.innerHTML=data[i]["FECHA_EMISION"];
-                    const rubros = document.createElement("td");
-                    const puntos = document.createElement("td");
-                    const descuento = document.createElement("td");
-                    const tope = document.createElement("td");
-                    const ver = document.createElement("button");                                 
-                }
-                
+                    var date = new Date(data[i]["FECHA_EMISION"]);
+                    var idCertificado= data[i]["ID_CERTIFICADO"];
+                    //String strDate = sm.format(data[i]["FECHA_EMISION"]);
+                    const mesEmision = document.createElement("td");mesEmision.innerHTML="<th>"+monthNames[date.getMonth()]+" de "+date.getUTCFullYear()+"</th>";
+                    const rubros = document.createElement("td");rubros.innerHTML="<th>"+data[i]["RUBROS_DISPONIBLES"]+"</th>";
+                    const puntos = document.createElement("td");puntos.innerHTML="<th>"+data[i]["PUNTOS"]+"</th>";
+                    const descuento = document.createElement("td");descuento.innerHTML="<th>"+data[i]["DESCUENTO"]+"</th>";
+                    const tope = document.createElement("td");tope.innerHTML="<th> $ "+data[i]["TOPE"]+"</th>";
+                    const boton =document.createElement("td");
+                    const ver = document.createElement("td");ver.innerHTML="<p data-placement='top' data-toggle='tooltip' title='Edit'>\n\
+                                                                                <button class='btn btn-primary btn-xs' data-title='Edit' data-toggle='modal' data-target='_blank' onclick='mostrarDescuento("+idCertificado+")' >\n\
+                                                                                    <span class='glyphicon glyphicon-search'></span>\n\
+                                                                                </button>\n\
+                                                                            </p>";
+                    fila.appendChild(mesEmision);
+                    fila.appendChild(rubros);
+                    fila.appendChild(puntos);
+                    fila.appendChild(descuento);
+                    fila.appendChild(tope);
+                    fila.appendChild(ver);
+                    tbody[0].appendChild(fila);
+                }   
             }
         }); 
     });

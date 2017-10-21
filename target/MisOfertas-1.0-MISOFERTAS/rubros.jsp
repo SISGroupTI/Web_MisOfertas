@@ -29,6 +29,10 @@
 
 
 <div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="index.jsp">Home</a></li>
+        <li class="breadcrumb-item active">Rubros</li>
+    </ol>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="container">
@@ -246,7 +250,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-2 col-sm-4 col-xs-12 pull-right">
-            <a href="#"> Ver todos...</a>
+            <!--<a href="#"> Ver todos...</a>-->
 
         </div>
     </div>
@@ -280,14 +284,14 @@
                 const imgOferta= document.getElementsByClassName("imgOferta");
                 const priceOferta = document.getElementsByClassName("priceOferta");
                 //MEJORAR CONDICION
-                const aux =(titles.length === data.length)? data.length : data.length;
+                const aux =(titles.length === data.length)? data.length : titles.length;
                 //console.log(aux);
 
                 for(var i = 0; i<aux ;i++){
                     let idOferta = data[i]["ID_OFERTA"];
                     titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
                     var imagen = imgOferta[i].children;
-                        imagen[0].src = "img/DHhl9jtWsAQLzFt.jpg";
+                    imagen[0].src = "MostrarImagenServlet?imageId="+data[i]["IMAGEN"];
                     var price = priceOferta[i].children;
                         price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
                         price[1].addEventListener("click", function(){

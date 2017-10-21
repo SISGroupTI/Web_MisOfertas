@@ -25,7 +25,6 @@ public class ConsumidorModel {
     public ConsumidorModel(){
         
     }
-    
     public ResultSet consumidorIniciarSesion(Consumidor consumidor) throws ClassNotFoundException, SQLException{
         
         //* Instancia de la clase conexion - Singleton
@@ -63,7 +62,6 @@ public class ConsumidorModel {
         return null;
         
     }
-    
     public boolean consumidorRegistrar(Consumidor consumidor) throws SQLException, ClassNotFoundException{
         String spRegistrarConsumidor = "{call SP_REGISTRAR_CONSUMIDOR(?,?,?,?,?,?,?,?)}";
         Connection con = BD.Conexion.getConnection();
@@ -77,8 +75,7 @@ public class ConsumidorModel {
         stmt.setInt(7, consumidor.getRecibirOferta());
         stmt.setInt(8, consumidor.getIsActivo());
         return stmt.execute();
-    }
-    
+    }   
     public boolean consumidorVerificarExistenciaEmail(Consumidor consumidor) throws ClassNotFoundException, SQLException{
         String spCountEmail = "{call SP_COUNT_CONSUMIDOR_CORREO(?,?)}";
         Connection con = BD.Conexion.getConnection();

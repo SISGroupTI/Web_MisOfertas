@@ -25,4 +25,19 @@ public class RubroModel {
         return null;
     }
     
+    public ResultSet selectRubrosDestacadoGeneral() throws ClassNotFoundException, SQLException{
+        //Metodo que tiene como objetivo listar los rubros y las cantidades de ofertas que posee cada uno
+        
+        Connection con = BD.Conexion.getConnection();
+        String spRubro = "{call SP_SELECT_RUBRO_DESTACADA(?)}";
+        CallableStatement stmt = con.prepareCall(spRubro);
+        stmt.registerOutParameter(1, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(1);
+        if(set!=null){
+            return set;
+        }
+        return null;
+    }
+    
 }

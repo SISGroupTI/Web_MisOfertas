@@ -47,16 +47,6 @@ public class CuponesGeneradosConsumidorServlet extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(true); // se obtiene la sesion
-            
-            /*
-                para obtener un parametro del array de sesion creado al momento de iniciar sesion
-                por ejemplo, se debe realizar de la siguiente forma
-                session.getAttribute("<nombreAtributo>") = obtiene un object que debe ser casteado segun sea necesario
-            
-            */
-            //En este caso se castea primero a String para luego parsear el String que se reconoce que corresponde al ID del consumidor
- 
-            
             int idConsumidor = Integer.parseInt((String)session.getAttribute("idConsumidor"));
             Controllers.CuponController cuponController = new CuponController();
             String json;

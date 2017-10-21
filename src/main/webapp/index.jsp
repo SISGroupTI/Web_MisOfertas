@@ -42,10 +42,10 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-4 ">
                                     <div class="list-group" id="listRubrosDestacado">
-                                        <button type="button" class="list-group-item" onclick="location.href = 'rubros.jsp';" ><span class="badge lineaBlanca">14</span> Linea blanca</button>
+                                        <!--<button type="button" class="list-group-item" onclick="location.href = 'rubros.jsp';" ><span class="badge lineaBlanca">14</span> Linea blanca</button>
                                         <button type="button" class="list-group-item" onclick="location.href = 'rubros.jsp';"><span class="badge alimentos">2</span> Alimentos</button>
                                         <button type="button" class="list-group-item" onclick="location.href = 'rubros.jsp';"><span class="badge servicios">4</span> Servicios</button>
-                                    </div>
+                                    --></div>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +319,18 @@
                         btnValorarDestacado.addEventListener("click", function () {
                                 window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
                             }, false);
-                    });        
+                    });
+                    $.post("RubrosCantOfertasDestacadoConsumidorServlet", {
+                        idConsumidor:<%=session.getAttribute("idConsumidor")%>
+                        }, function (data) {
+                        var listRubros = document.getElementById("listRubrosDestacado");
+                        $.each(data, function (key, value) {
+                            var idConsumidor= <%=session.getAttribute("idConsumidor")%>;
+                            var button = "<button type='button' class='list-group-item' onclick=" + "toRubrosRegistrarTrack("+value["ID_RUBRO"]+","+idConsumidor+")" + "><span class='badge'>" + value["CANTIDAD_OFERTAS"] + "</span>" + value["DESCRIPCION"] + "</button>";
+                            listRubros.innerHTML += button;
+                        });
+                    });          
+                    
                 <%
                     }else{
                 %>
@@ -334,7 +345,15 @@
                         btnValorarDestacado.addEventListener("click", function () {
                                 window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
                             }, false);
-                    });      
+                    }); 
+                    $.post("RubrosCantOfertasDestacadoGeneralServlet", {
+                        }, function (data) {
+                        var listRubros = document.getElementById("listRubrosDestacado");
+                        $.each(data, function (key, value) {
+                            var button = "<button type='button' class='list-group-item' onclick=" + "toRubros(" + value["ID_RUBRO"] + ")" + "><span class='badge'>" + value["CANTIDAD_OFERTAS"] + "</span>" + value["DESCRIPCION"] + "</button>";
+                            listRubros.innerHTML += button;
+                        });
+                    });
                 <%
                     }
                 %>
@@ -387,7 +406,6 @@
                 });
                 $.post("RubrosCantOfertasServlet", {}, function (data) {
                     var listRubros = document.getElementById("listRubros");
-                    //<button type="button" class="list-group-item" onclick="location.href='rubros.jsp';"><span class="badge">14</span> Linea blanca</button>
                     $.each(data, function (key, value) {
                         <% if (session.getAttribute("idConsumidor")==null){%>
                             var button = "<button type='button' class='list-group-item' onclick=" + "toRubros(" + value["ID_RUBRO"] + ")" + "><span class='badge'>" + value["CANTIDAD_OFERTAS"] + "</span>" + value["DESCRIPCION_RUBRO"] + "</button>";

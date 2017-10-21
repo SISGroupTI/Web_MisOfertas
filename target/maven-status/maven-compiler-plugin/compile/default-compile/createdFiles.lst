@@ -6,6 +6,7 @@ Entity\DetalleOferta.class
 Servlets\SelectOfertasPorRubroServelet.class
 Servlets\LogOutConsumidorServlet.class
 BD\TestConnection.class
+Servlets\RubrosCantOfertasDestacadoGeneralServlet.class
 Models\ConsumidorModel.class
 Servlets\SelectOfertaPorIdServlet.class
 Models\ValoracionModel.class
@@ -17,6 +18,8 @@ Controllers\TrackController.class
 Servlets\SelectOfertaDestacadaServlet.class
 Servlets\TrackRubroServlet.class
 Servlets\TrackOfertaServlet.class
+Servlets\SelectOfertaDestacadaRubroConsServlet.class
+Servlets\RubrosCantOfertasDestacadoConsumidorServlet.class
 Servlets\CuponesGeneradosConsumidorServlet.class
 Models\TrackModel.class
 Helpers\BCrypt.class
@@ -27,6 +30,7 @@ Entity\Escala.class
 Entity\Estado.class
 Helpers\ToJson.class
 Entity\Perfil.class
+Servlets\SelectOfertaDestacadaRubroGenServlet.class
 Models\RubroModel.class
 Servlets\VerificarCorreoConsumidorServlet.class
 Models\OfertaModel.class
@@ -44,11 +48,14 @@ Entity\Rubro.class
 Controllers\CuponController.class
 Entity\Certificado.class
 Entity\Valoracion.class
+Servlets\SelectOfertaDestacadaGeneralServlet.class
 Entity\Trabajador.class
+Servlets\SelectOfertasRubroValConsServlet.class
 Servlets\SelectOfertasServlet.class
 Servlets\RegisterConsumidorServlet.class
 BD\Conexion.class
 Servlets\RubrosCantOfertasServlet.class
+Servlets\SelectOfertasRubroValGenServlet.class
 Servlets\LoginConsumidorServlet.class
 Servlets\SelectImagenesOfertaServlet.class
 Servlets\MostrarDescuentoServlet.class

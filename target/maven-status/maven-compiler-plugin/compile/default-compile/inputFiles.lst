@@ -1,9 +1,11 @@
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Producto.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Trabajador.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RubrosCantOfertasDestacadoConsumidorServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RubrosCantOfertasServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Consumidor.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\VerificarCorreoConsumidorServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\ImgOferta.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertaDestacadaRubroConsServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Empresa.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Models\ValoracionModel.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertasServlet.java
@@ -15,6 +17,8 @@ D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Controllers\OfertaContro
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Helpers\JsonUtils.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectImagenesOfertaServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\TrackRubroServlet.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertasRubroValGenServlet.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RubrosCantOfertasDestacadoGeneralServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertasPorRubroServelet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertaPorIdServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Valoracion.java
@@ -36,9 +40,11 @@ D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\MostrarDescuent
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\BD\Conexion.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Models\RubroModel.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Controllers\TesterController.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertasRubroValConsServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Controllers\ValoracionController.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Controllers\RubroController.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\MostrarImagenServlet.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertaDestacadaRubroGenServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\HistorialCorreo.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\LoginConsumidorServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RegistrarValoracionServelet.java
@@ -49,6 +55,7 @@ D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Models\OfertaModel.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Perfil.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Helpers\BCrypt.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\RegisterConsumidorServlet.java
+D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\SelectOfertaDestacadaGeneralServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\CuponesGeneradosConsumidorServlet.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Entity\Modulo.java
 D:\Ian Cardenas\Documentos\Web MisOfertas\src\main\java\Servlets\TrackOfertaServlet.java

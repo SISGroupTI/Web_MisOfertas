@@ -21,7 +21,7 @@
                             <ul>
                                 <li> <a href="#"> <i class="fa fa-phone">  </i> 2245123412</a> </li>
                                 <li> <a href="#"> <i class="fa fa-envelope-o">  </i> misofertas@facontacto.cl  </a> </li>
-                                <li> <a href="#"> <i class="fa fa-map-marker">   </i> DuocUC - Sede Puente Alto, Santiago, Chile  </a> </li>
+                                <li> <a href="https://www.google.cl/maps/place/Duoc+UC:+Sede+Puente+Alto/@-33.5983925,-70.5807816,17z/data=!3m1!4b1!4m5!3m4!1s0x9662d7037854df81:0x893f58a1479b8f82!8m2!3d-33.5983925!4d-70.5785929?hl=es-419" target="_blank"> <i class="fa fa-map-marker">   </i> DuocUC - Sede Puente Alto, Santiago, Chile  </a> </li>
                             </ul>
                         </div>
                     </div>

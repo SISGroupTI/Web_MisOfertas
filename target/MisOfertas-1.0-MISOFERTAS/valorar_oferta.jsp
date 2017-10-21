@@ -56,7 +56,7 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                             <!--<img src="img/empty.png" alt="" class="img-responsive">-->
-                                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:  100%;">
                                                 <!-- Indicators -->
                                                 <ol class="carousel-indicators" id="cantidadImagenes">
                                                 </ol>
@@ -331,6 +331,7 @@
                         var ruta = data[i]['IMAGEN'];
                         img.setAttribute("src","MostrarImagenServlet?imageId="+ruta);
                         img.setAttribute("class","img-responsive");
+                        //img.setAttribute("style","alignment: center;");
                         div.appendChild(img);
                         
                         slides.appendChild(li);

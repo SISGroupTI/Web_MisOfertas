@@ -4,6 +4,7 @@ package Models;
 import Entity.Consumidor;
 import Entity.Oferta;
 import Entity.Rubro;
+import Entity.Valoracion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -97,4 +98,65 @@ public class OfertaModel {
         }
         return null;
     }
+    public ResultSet selectOfertaDestacadaRubroCons(Oferta oferta,Consumidor consumidor) throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaRubro = "{call SP_SELECT_OFE_DES_RUB_CONS(?,?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaRubro);
+        stmt.setInt(1, (int) consumidor.getIdConsumidor());
+        stmt.setInt(2, (int) oferta.getRubro().getIdRubro());
+        stmt.registerOutParameter(3,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(3);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
+    public ResultSet selectOfertaDestacadaRubroGen(Oferta oferta) throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaRubro = "{call SP_SELECT_OFE_DES_RUB_GEN(?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaRubro);
+        stmt.setInt(1, (int) oferta.getRubro().getIdRubro());
+        stmt.registerOutParameter(2,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(2);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
+    public ResultSet selectOfertasRubroValoracionConsu(Valoracion valoracion,Rubro rubro, Consumidor consumidor)throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaRubro = "{call SP_SELECT_OFT_RUB_VAL_CONS(?,?,?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaRubro);
+        stmt.setInt(1, (int) valoracion.getIdValoracion());
+        stmt.setInt(2, (int) rubro.getIdRubro());
+        stmt.setInt(3, (int) consumidor.getIdConsumidor());
+        stmt.registerOutParameter(4,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(4);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
+    public ResultSet selectOfertasRubroValoracionGen(Valoracion valoracion,Rubro rubro)throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOfertaRubro = "{call SP_SELECT_OFT_RUB_VAL_GEN(?,?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOfertaRubro);
+        stmt.setInt(1, (int) rubro.getIdRubro());
+        stmt.setInt(2, (int) valoracion.getIdValoracion());
+        stmt.registerOutParameter(3,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(3);
+        if(set != null){
+            return set;
+        }
+        return null;
+    }
+    
 }

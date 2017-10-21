@@ -80,9 +80,9 @@
                 <div class="panel-body">
                     <div class="list-group">
                         <button type="button" class="list-group-item" onclick="location.href='index.jsp';">Ofertas</button>
-                        <button type="button" class="list-group-item" onclick="location.href='ofertas.jsp';">Destacadas</button>
+                        <!--<button type="button" class="list-group-item" onclick="location.href='ofertas.jsp';">Destacadas</button>
                         <button type="button" class="list-group-item" onclick="location.href='rubros.jsp';">Rubros disponibles</button>
-                    </div>
+                    --></div>
                 </div>
             </div>
         </div>

@@ -53,6 +53,7 @@
                 <li class="dropdown" id="liMiCuenta">
                     <a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle"> Mi Cuenta<span class="caret"></span></a>
                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li role="presentation"><a href="mi_cuenta.jsp">Mi cuenta</a></li>
                         <li role="presentation"><a onclick="cerrar_sesion()">Cerrar sesión </a></li>
                     </ul>
                 </li>

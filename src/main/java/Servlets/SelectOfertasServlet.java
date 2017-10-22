@@ -38,9 +38,7 @@ public class SelectOfertasServlet extends HttpServlet {
             String json = ofertaController.selectOfertas(); 
             out.print(json);
             out.flush();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SelectOfertasServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(SelectOfertasServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

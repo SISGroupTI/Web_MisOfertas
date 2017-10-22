@@ -58,9 +58,7 @@ public class RegisterConsumidorServlet extends HttpServlet {
             //Falta verificacion
             response.getWriter().write("hola");
             
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegisterConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         

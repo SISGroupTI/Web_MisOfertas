@@ -25,7 +25,6 @@ public class ConsumidorModel {
     public ConsumidorModel(){
         
     }
-    
     public ResultSet consumidorIniciarSesion(Consumidor consumidor) throws ClassNotFoundException, SQLException{
         
         //* Instancia de la clase conexion - Singleton
@@ -63,7 +62,6 @@ public class ConsumidorModel {
         return null;
         
     }
-    
     public boolean consumidorRegistrar(Consumidor consumidor) throws SQLException, ClassNotFoundException{
         String spRegistrarConsumidor = "{call SP_REGISTRAR_CONSUMIDOR(?,?,?,?,?,?,?,?)}";
         Connection con = BD.Conexion.getConnection();
@@ -77,8 +75,7 @@ public class ConsumidorModel {
         stmt.setInt(7, consumidor.getRecibirOferta());
         stmt.setInt(8, consumidor.getIsActivo());
         return stmt.execute();
-    }
-    
+    }   
     public boolean consumidorVerificarExistenciaEmail(Consumidor consumidor) throws ClassNotFoundException, SQLException{
         String spCountEmail = "{call SP_COUNT_CONSUMIDOR_CORREO(?,?)}";
         Connection con = BD.Conexion.getConnection();
@@ -96,4 +93,29 @@ public class ConsumidorModel {
         }
         return false;
     }
+    public ResultSet selectConsumidorId(Consumidor consumidor)throws ClassNotFoundException, SQLException
+    {
+        Connection con = BD.Conexion.getConnection();
+        String spSelectConsumidor = "{call SP_SELECT_CONSUMIDOR(?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectConsumidor);
+        stmt.setInt(1, (int) consumidor.getIdConsumidor());
+        stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(2); //(ResultSet)stmt.getObject(<posicion del parametro del cursor>)
+        if(set!=null){
+            return set;
+        }
+        return null;
+    }
+    public boolean consumidorModificar(Consumidor consumidor) throws SQLException, ClassNotFoundException{
+        String spRegistrarConsumidor = "{call SP_MODIFICAR_CONSUMIDOR(?,?,?,?,?)}";
+        Connection con = BD.Conexion.getConnection();
+        CallableStatement stmt = con.prepareCall(spRegistrarConsumidor);
+        stmt.setInt(1, (int) consumidor.getIdConsumidor());
+        stmt.setString(2, consumidor.getNombre());
+        stmt.setString(3, consumidor.getApellidos());
+        stmt.setString(4, consumidor.getContrasena());
+        stmt.setInt(5, consumidor.getRecibirOferta());
+        return stmt.execute();
+    }   
 }

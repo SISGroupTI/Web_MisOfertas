@@ -87,4 +87,24 @@ public class ConsumidorController {
         return model.consumidorVerificarExistenciaEmail(consumidor);
     }
     
+    public String selectConsumidorId(int idConsumidor) throws ClassNotFoundException, SQLException
+    {
+        Consumidor consumidor = new Consumidor();
+        consumidor.setIdConsumidor(idConsumidor);
+        ConsumidorModel model = new ConsumidorModel();
+        String json = Helpers.JsonUtils.convertResultSetToJson(model.selectConsumidorId(consumidor));
+        return json;
+    }
+    public Boolean modificarConsumidor(int idConsumidor,String nombre,String apellido,String password,int recibirOferta) throws ClassNotFoundException, SQLException
+    {
+        Consumidor consumidor = new Consumidor();
+        consumidor.setIdConsumidor(idConsumidor);
+        consumidor.setApellidos(apellido);
+        consumidor.setNombre(nombre);
+        consumidor.setContrasena(password);
+        consumidor.setRecibirOferta((short) recibirOferta);
+        ConsumidorModel model = new ConsumidorModel();
+        return model.consumidorModificar(consumidor);
+    }
+    
 }

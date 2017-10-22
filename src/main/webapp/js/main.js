@@ -28,11 +28,10 @@ function ingresar(){
         },function(data){
            console.log(data);
            if(data==="error"){
-               swal(
-                   'Verifica tus crendenciales',
-                   'Intenta nuevamente',
-                   'error'
-               );
+            swal({
+                title: 'Verifica tus crendenciales',
+                text: 'Intenta nuevamente'
+            });
             document.getElementById("txtIngresoContrasena").value = "";
            }else if(data==="success"){
               window.location.href = "index.jsp";   
@@ -93,17 +92,80 @@ function crea_cuenta(){
         dv:dv
     },function(data){
         console.log(data);
-        swal(
-            'Su cuenta se ha creado satisfactoriamente',
-            '',
-            'success'
+        swal({
+            title: 'Cuenta Creada',
+            text: 'Redireccionando a la pagina de ingreso',
+            timer: 1000
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                window.location.href="ingresar.jsp";
+              }
+            }
         );
     });
     
 }
+function modificarCuenta(idConsumidor)
+{
+    var nombre = document.getElementById("txtCrearNombre").value;
+    var apellido = document.getElementById("txtCrearApellidos").value;
+    var contrasena = document.getElementById("txtCrearContrasena").value;
+    var recibirOferta = document.getElementById("chkRecibirOfertas");
+    var recibeOferta = 0;
+    if(recibirOferta.checked){
+        recibeOferta = 1;
+    }
+    $.post("/MisOfertas/ModificarConsumidorServlet",{
+        idConsumidor:idConsumidor,
+        nombre:nombre,
+        apellido:apellido,
+        contrasena:contrasena,
+        recibeOferta:recibeOferta
+    },function(data){
+        console.log(data);
+        swal({
+            title: 'Cuenta Modificada',
+            text: 'Redireccionando a la pagina principal',
+            timer: 1000
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                window.location.href="index.jsp";
+              }
+            }
+        );
+    });
 
-
-function toRubros(idRubro){
-    alert(idRubro);
 }
-
+function toRubros(idRubro){
+    var id = idRubro;
+   
+    window.location.href='rubros.jsp?Id='+id;
+     
+}
+function toRubrosRegistrarTrack(idRubro,idConsumidor){
+    var id = idRubro;
+    var idCons = idConsumidor;
+    //alert("idRubro: "+id+" idCons"+idCons);
+    $.post("/MisOfertas/TrackRubroServlet",{
+        idRubro:id,
+        idConsumidor:idCons
+    },function(data){
+        console.log(data);
+    });
+    window.location.href='rubros.jsp?Id='+id;
+}
+function mostrarDescuento(idCertificado){
+    //alert(""+idCertificado);
+    $.post("/MisOfertas/MostrarDescuentoServlet",{
+        idCertificado:idCertificado
+    },function(data){
+        
+        console.log("esta es mi data "+ data);
+    });
+}

@@ -48,7 +48,6 @@ public class CuponController {
         String json = Helpers.JsonUtils.convertResultSetToJson(cuponModel.selectCuponesGeneradorPorCupon(certificado));
         return json;
     }
-    //SP_SELECT_CUPONESGEN_VIGENT
     public String selectCuponVigente(int idConsumidor) throws ClassNotFoundException, SQLException
     {
         Entity.Consumidor consumidor = new Consumidor();

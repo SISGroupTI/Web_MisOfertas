@@ -331,7 +331,8 @@
                         var ruta = data[i]['IMAGEN'];
                         img.setAttribute("src","MostrarImagenServlet?imageId="+ruta);
                         img.setAttribute("class","img-responsive");
-                        //img.setAttribute("style","alignment: center;");
+                        img.setAttribute("style","margin: auto;");
+                        
                         div.appendChild(img);
                         
                         slides.appendChild(li);

@@ -4,8 +4,10 @@ Controllers\RubroController.class
 Controllers\ValoracionController.class
 Entity\DetalleOferta.class
 Servlets\SelectOfertasPorRubroServelet.class
+Servlets\SelectConsumidorIdServlet.class
 Servlets\LogOutConsumidorServlet.class
 BD\TestConnection.class
+Servlets\ModificarConsumidorServlet.class
 Servlets\RubrosCantOfertasDestacadoGeneralServlet.class
 Models\ConsumidorModel.class
 Servlets\SelectOfertaPorIdServlet.class

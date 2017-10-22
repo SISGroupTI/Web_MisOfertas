@@ -159,6 +159,11 @@
                     tbody[0].appendChild(fila);
                 }   
             }
+            if(data.length===0)
+            {
+                var btn = document.getElementById("descargarCupon");
+                btn.disabled=true;
+            }
         }); 
     });
     

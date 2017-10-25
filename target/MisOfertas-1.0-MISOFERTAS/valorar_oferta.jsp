@@ -79,7 +79,7 @@
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-offset-0 text-center" align="center">
-                                            <h4 class="precioOferta"> <!--$5.990--></h4>
+                                            <h2 class="precioOferta"> <!--$5.990--></h2>
                                             <div class="panel panel-default panelDetalleOferta ">
                                                 <div class="panel-body titleDetalleOferta">
                                                     Oferta disponible hasta el <h5 class="fechaTermino"></h5>
@@ -104,6 +104,7 @@
                                                     <p>
                                                     <ul>
                                                         <li><h5 class="descripcion"></h5></li>
+                                                        <li><h5 class="local"></h5></li>
                                                     </ul>
                                                     </p>
                                                     <p> <b>Letra Chica</b></p>
@@ -330,7 +331,7 @@
                         var img = document.createElement("img");
                         var ruta = data[i]['IMAGEN'];
                         img.setAttribute("src","MostrarImagenServlet?imageId="+ruta);
-                        img.setAttribute("class","img-responsive");
+                        //img.setAttribute("class","img-responsive");
                         img.setAttribute("style","margin: auto;");
                         
                         div.appendChild(img);
@@ -351,6 +352,7 @@
                         const idOferta = document.getElementsByClassName("idOferta");                            
                         const fechaTermino = document.getElementsByClassName("fechaTermino");
                         const condiciones = document.getElementsByClassName("condiciones");
+                        const local = document.getElementsByClassName("local");
                         modaltitle[0].textContent = data[0]["TITULO_OFERTA"];
                         titulo[0].textContent = data[0]["TITULO_OFERTA"];
                         precio[0].textContent = separarMiles(data[0]["PRECIO"]);
@@ -358,9 +360,7 @@
                         condiciones[0].textContent = data[0]["CONDICIONES"];
                         descripcion[0].textContent = data[0]["DESCRIPCION_OFERTA"];
                         idOferta[0].textContent = data[0]["ID_OFERTA"];
-                        
-                        // LOAD CARROUSEL
-                        
+                        local[0].textContent="Direccion: "+data[0]["DIRECCION"];
                     }
                 });
                 $.post("SelectOfertasServlet", {}, function (data) {

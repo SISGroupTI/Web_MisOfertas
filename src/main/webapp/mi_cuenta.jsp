@@ -53,27 +53,43 @@
             <form data-toggle="validator" role="form">
                 <div class="form-group">
                     <label for="txtCrearNombre">Nombre*</label>
-                    <input type="text" class="form-control" id="txtCrearNombre" placeholder="Pedro" required>
+                    <input type="text" class="form-control" id="txtCrearNombre" placeholder="Pedro" 
+                           pattern="^[a-zA-Z_áéíóúñ\s]*$" maxlength="30" 
+                           data-pattern-error="Solo puedes ingresar caracteres"  data-required-error="Completa este campo" required>
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtCrearApellidos">Apellidos*</label>
-                    <input type="text" class="form-control" id="txtCrearApellidos" placeholder="Piedra" required>
+                    <input type="text" class="form-control" id="txtCrearApellidos" placeholder="Piedra" 
+                           pattern="^[a-zA-Z_áéíóúñ\s]*$" maxlength="30" 
+                           data-pattern-error="Solo puedes ingresar caracteres"  data-required-error="Completa este campo" required>
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtRut" >Rut*</label>
-                    <input disabled="true" type="text" class="form-control" id="txtRut" placeholder="18607283-9" required>
+                    <input disabled="true" type="text" class="form-control" id="txtRut" placeholder="18607283-9" required oninput="checkRut(this)"
+                           pattern="^([0-9]+-[0-9K])$" 
+                           data-required-error="Completa este campo"
+                           data-pattern-error="Ingresa el rut sin puntos">
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtIngresoCorreo">Correo*</label>
-                    <input disabled="true" type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl" required> 
+                    <input disabled="true" type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl" required pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$"> 
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtCrearContrasena">Contraseña*</label>
-                    <input type="password" class="form-control" id="txtCrearContrasena" placeholder="*************" >
+                    <input type="password" class="form-control" id="txtCrearContrasena" placeholder="*************" required data-minlength="4" 
+                           data-required-error="Completa este campo" data-error="Mínimo 4 caracteres">
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtCrearVerificar" >Verificar contraseña*</label>
-                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************" >
+                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************" required data-minlength="4" 
+                           data-required-error="Completa este campo" data-error="Mínimo 4 caracteres"
+                           data-match="#txtCrearContrasena" data-match-error="Las contraseñas no coinciden">
+                    <div class="help-block with-errors"></div>
                 </div>
                 <div class="checkbox">
                     <label>

@@ -80,67 +80,67 @@ function crea_cuenta(){
     var run = rut[0];
     var dv = rut[1];
        
-    validaCorreo("txtIngresoCorreo");
-   
-    $.post("/MisOfertas/RegisterConsumidorServlet",{
-        nombre:nombre,
-        apellido:apellido,
-        correo:correo,
-        contrasena:contrasena,
-        recibeOferta:recibeOferta,
-        run:run,
-        dv:dv
-    },function(data){
-        console.log(data);
-        swal({
-            title: 'Cuenta Creada',
-            text: 'Redireccionando a la pagina de ingreso',
-            timer: 1000
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                window.location.href="ingresar.jsp";
-              }
-            }
-        );
-    });
-    
-}
-function modificarCuenta(idConsumidor)
-{
-    var nombre = document.getElementById("txtCrearNombre").value;
-    var apellido = document.getElementById("txtCrearApellidos").value;
-    var contrasena = document.getElementById("txtCrearContrasena").value;
-    var recibirOferta = document.getElementById("chkRecibirOfertas");
-    var recibeOferta = 0;
-    if(recibirOferta.checked){
-        recibeOferta = 1;
-    }
-    $.post("/MisOfertas/ModificarConsumidorServlet",{
-        idConsumidor:idConsumidor,
-        nombre:nombre,
-        apellido:apellido,
-        contrasena:contrasena,
-        recibeOferta:recibeOferta
-    },function(data){
-        console.log(data);
-        swal({
-            title: 'Cuenta Modificada',
-            text: 'Redireccionando a la pagina principal',
-            timer: 1000
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                window.location.href="index.jsp";
-              }
-            }
-        );
-    });
+   if(nombre!=="" && apellido!=="" && correo!=="" && contrasena!=="" && verificarContrasena!=="" && rut!==""){
+        validaCorreo("txtIngresoCorreo");
 
+        $.post("/MisOfertas/RegisterConsumidorServlet",{
+            nombre:nombre,
+            apellido:apellido,
+            correo:correo,
+            contrasena:contrasena,
+            recibeOferta:recibeOferta,
+            run:run,
+            dv:dv
+        },function(data){
+             swal({
+                 title: 'Cuenta Creada',
+                 text: 'Redireccionando a la pagina de ingreso',
+                 timer: 1000
+               }).then(
+                 function () {},
+                 // handling the promise rejection
+                 function (dismiss) {
+                   if (dismiss === 'timer') {
+                     window.location.href="ingresar.jsp";
+                   }
+                 }
+            );
+        });
+   }    
+}
+function modificarCuenta(idConsumidor){
+    if(validarDatosModificarCuenta()){
+        var nombre = document.getElementById("txtCrearNombre").value;
+        var apellido = document.getElementById("txtCrearApellidos").value;
+        var contrasena = document.getElementById("txtCrearContrasena").value;
+        var recibirOferta = document.getElementById("chkRecibirOfertas");
+        var recibeOferta = 0;
+        if(recibirOferta.checked){
+               recibeOferta = 1;
+        }
+        $.post("/MisOfertas/ModificarConsumidorServlet",{
+               idConsumidor:idConsumidor,
+                nombre:nombre,
+                apellido:apellido,
+                contrasena:contrasena,
+                recibeOferta:recibeOferta
+        },function(data){
+               console.log(data);
+               swal({
+                   title: 'Cuenta Modificada',
+                   text: 'Redireccionando a la pagina principal',
+                   timer: 1000
+                 }).then(
+                   function () {},
+                   // handling the promise rejection
+                   function (dismiss) {
+                     if (dismiss === 'timer') {
+                       window.location.href="index.jsp";
+                     }
+                   }
+               );
+        });
+    }
 }
 function toRubros(idRubro){
     var id = idRubro;
@@ -168,4 +168,206 @@ function mostrarDescuento(idCertificado){
         
         console.log("esta es mi data "+ data);
     });
+}
+
+
+//------------------------------VALIDAR RUT-----------------------------------
+function checkRut(rut) {
+    // Despejar Puntos
+    var valor = rut.value.replace('.','');
+    // Despejar Guión
+    valor = valor.replace('-','');
+    
+    // Aislar Cuerpo y Dígito Verificador
+    cuerpo = valor.slice(0,-1);
+    dv = valor.slice(-1).toUpperCase();
+    
+    // Formatear RUN
+    rut.value = cuerpo + '-'+ dv
+    
+    // Si no cumple con el mínimo ej. (n.nnn.nnn)
+    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+    
+    // Calcular Dígito Verificador
+    suma = 0;
+    multiplo = 2;
+    
+    // Para cada dígito del Cuerpo
+    for(i=1;i<=cuerpo.length;i++) {
+    
+        // Obtener su Producto con el Múltiplo Correspondiente
+        index = multiplo * valor.charAt(cuerpo.length - i);
+        
+        // Sumar al Contador General
+        suma = suma + index;
+        
+        // Consolidar Múltiplo dentro del rango [2,7]
+        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+  
+    }
+    
+    // Calcular Dígito Verificador en base al Módulo 11
+    dvEsperado = 11 - (suma % 11);
+    
+    // Casos Especiales (0 y K)
+    dv = (dv == 'K')?10:dv;
+    dv = (dv == 0)?11:dv;
+    
+    // Validar que el Cuerpo coincide con su Dígito Verificador
+    if(dvEsperado != dv) { rut.setCustomValidity("RUT Invalido"); return false; }
+    
+    // Si todo sale bien, eliminar errores (decretar que es válido)
+    rut.setCustomValidity('');
+}
+
+function Valida_Rut( Objeto )
+{
+	var tmpstr = "";
+	var intlargo = Objeto.value
+	if (intlargo.length> 0)
+	{
+		crut = Objeto.value
+		largo = crut.length;
+		if ( largo <2 )
+		{
+			
+			return false;
+		}
+		for ( i=0; i <crut.length ; i++ )
+		if ( crut.charAt(i) !== ' ' && crut.charAt(i) !== '.' && crut.charAt(i) !== '-' )
+		{
+			tmpstr = tmpstr + crut.charAt(i);
+		}
+		rut = tmpstr;
+		crut=tmpstr;
+		largo = crut.length;
+ 
+		if ( largo> 2 )
+			rut = crut.substring(0, largo - 1);
+		else
+			rut = crut.charAt(0);
+ 
+		dv = crut.charAt(largo-1);
+ 
+		if ( rut === null || dv === null )
+		return 0;
+ 
+		var dvr = '0';
+		suma = 0;
+		mul  = 2;
+ 
+		for (i= rut.length-1 ; i>= 0; i--)
+		{
+			suma = suma + rut.charAt(i) * mul;
+			if (mul === 7)
+				mul = 2;
+			else
+				mul++;
+		}
+ 
+		res = suma % 11;
+		if (res===1)
+			dvr = 'k';
+		else if (res===0)
+			dvr = '0';
+		else
+		{
+			dvi = 11-res;
+			dvr = dvi + "";
+		}
+ 
+		if ( dvr !== dv.toLowerCase() )
+		{
+			
+			return false;
+		}
+		
+		return true;
+	}
+}
+
+
+function validarDatosCrearCuenta(){
+    var regOnlyLetters=new RegExp("^[a-zA-Z_áéíóúñ\s]*$");
+    var regEmail = new RegExp("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$");
+    var regRut=new RegExp("^([0-9]+-[0-9K])$");
+    
+    
+    var nombre = document.getElementById("txtCrearNombre").value;
+    var apellido = document.getElementById("txtCrearApellidos").value;
+    var correo = document.getElementById("txtIngresoCorreo").value;
+    var contrasena = document.getElementById("txtCrearContrasena").value;
+    var verificarContrasena = document.getElementById("txtCrearVerificar").value;
+    var rut = document.getElementById("txtRut").value;
+    
+    var cont = 0;
+    if(!regOnlyLetters.test(nombre)){
+        
+        cont+=1;
+    }
+    if(!regOnlyLetters.test(apellido)){
+        
+        cont+=1;
+    }
+    if(!regEmail.test(correo)){
+        
+        cont+=1;
+    }
+    if(contrasena==="" || verificarContrasena===""){
+        cont+=1;
+    }else{
+        if(contrasena!==verificarContrasena){ 
+            cont+=1;
+        }
+    }  
+    if(!regRut.test(rut)){
+            cont+=1;
+    }else{
+        if(!Valida_Rut(document.getElementById("txtRut"))){   
+            cont+=1;
+        }
+    }
+    return (cont===0);
+}
+
+function validarDatosIngresarCuenta(){
+    var regEmail = new RegExp("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$");
+    let correo = document.getElementById("txtIngresoCorreo").value;
+    let password = document.getElementById("txtIngresoContrasena").value;
+    var cont = 0;
+    if(!regEmail.test(correo)){
+        cont+=1;
+    }
+    if(password===""){
+        cont+=1;
+    }
+    return (cont===0);
+}
+
+function validarDatosModificarCuenta(){
+    var regOnlyLetters=new RegExp("^[a-zA-Z_áéíóúñ\s]*$");
+    
+    
+    var nombre = document.getElementById("txtCrearNombre").value;
+    var apellido = document.getElementById("txtCrearApellidos").value;
+    var contrasena = document.getElementById("txtCrearContrasena").value;
+    var verificarContrasena = document.getElementById("txtCrearVerificar").value;
+    
+    var cont = 0;
+    if(!regOnlyLetters.test(nombre)){
+        
+        cont+=1;
+    }
+    if(!regOnlyLetters.test(apellido)){
+        
+        cont+=1;
+    }
+    if(contrasena==="" || verificarContrasena===""){
+        cont+=1;
+    }else{
+        if(contrasena!==verificarContrasena){ 
+            cont+=1;
+        }
+    } 
+    return (cont===0);
 }

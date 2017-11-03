@@ -37,17 +37,22 @@
 
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
-            <form role="form" data-toggle="validator">
+            <form id="formIngreso" role="form" data-toggle="validator">
                 <div class="form-group">
                     <label for="txtIngresoCorreo">Correo</label>
-                    <input type="email" class="form-control" id="txtIngresoCorreo" placeholder="misofertas@mf.cl" ata-error="Bruh, that email address is invalid" required>
+                    <input type="email" class="form-control" id="txtIngresoCorreo" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" 
+                           placeholder="misofertas@mf.cl" data-pattern-error="Verifica el correo ingresado" required
+                           data-required-error="Completa este campo">
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtIngresoContrasena">Contraseña</label>
-                    <input type="password" class="form-control" id="txtIngresoContrasena" placeholder="*************">
+                    <input type="password" class="form-control" id="txtIngresoContrasena" placeholder="*************" 
+                           data-minlength="4" data-required-error="Completa este campo" required
+                           data-error="Mínimo 4 caracteres">
+                    <div class="help-block with-errors"></div>
                 </div>
-                <button type="button" class="btn btn-success pull-right btningresar" onclick="ingresar()">Ingresar</button>
+                <button type="button" id="btnIngresar" class="btn btn-success pull-right btningresar">Ingresar</button>
             </form>
         </div>
     </div>
@@ -70,9 +75,18 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/vendor/sweetalert2.min.js"></script>
 <script src="js/Validator.js"></script>
-
-
-
-
+<script>
+    $(document).ready(function () {
+        $("#btnIngresar").click(function(e){      
+            if(validarDatosIngresarCuenta()){
+                ingresar();
+            }            
+        });
+    });
+    
+</script>
 </body>
+
+
+
 </html>

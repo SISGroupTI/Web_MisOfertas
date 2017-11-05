@@ -1,4 +1,5 @@
 Entity\Consumidor.class
+Entity\OfertaCorreo.class
 Servlets\MostrarImagenServlet.class
 Controllers\RubroController.class
 Controllers\ValoracionController.class
@@ -16,6 +17,7 @@ Controllers\OfertaController.class
 Models\TestModel.class
 Entity\Modulo.class
 Entity\Producto.class
+Tasks\TestMail.class
 Controllers\TrackController.class
 Servlets\SelectOfertaDestacadaServlet.class
 Servlets\TrackRubroServlet.class
@@ -32,7 +34,9 @@ Entity\Escala.class
 Entity\Estado.class
 Helpers\ToJson.class
 Entity\Perfil.class
+Tasks\TestMail$1.class
 Servlets\SelectOfertaDestacadaRubroGenServlet.class
+Tasks\EnviarOfertasDestacatasJob$1.class
 Models\RubroModel.class
 Servlets\VerificarCorreoConsumidorServlet.class
 Models\OfertaModel.class
@@ -40,11 +44,13 @@ Controllers\ConsumidorController.class
 Entity\Empresa.class
 Entity\Local.class
 Entity\Track.class
+Tasks\EnviarCorreoJob.class
 Entity\CertificadoRubro.class
 Entity\Permiso.class
 Entity\Oferta.class
 Controllers\TesterController.class
 Models\CuponModel.class
+Tasks\EnviarOfertasDestacatasJob.class
 Helpers\JsonUtils.class
 Entity\Rubro.class
 Controllers\CuponController.class

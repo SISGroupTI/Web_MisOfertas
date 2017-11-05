@@ -3,12 +3,15 @@ package Models;
 
 import Entity.Consumidor;
 import Entity.Oferta;
+import Entity.OfertaCorreo;
 import Entity.Rubro;
 import Entity.Valoracion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import oracle.jdbc.OracleTypes;
 
 public class OfertaModel {
@@ -159,4 +162,41 @@ public class OfertaModel {
         return null;
     }
     
+    public List<OfertaCorreo> selectOfertasPorEnviarCorreo() throws ClassNotFoundException, SQLException, SQLException{
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOferta = "{call SP_SELECT_OFERTAR_ENVIARCORREO(?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOferta);
+        stmt.registerOutParameter(1,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(1);
+        
+    List<OfertaCorreo> lista = new ArrayList<>();
+        OfertaCorreo ofertac;
+        if(set != null){
+            while(set.next()){
+                ofertac = new OfertaCorreo();
+                ofertac.setIdOferta(set.getInt(1));
+                ofertac.setRubro(set.getString(2));
+                ofertac.setDireccion(set.getString(3));
+                ofertac.setEmpresa(set.getString(4));
+                ofertac.setCodigoOferta(set.getInt(5));
+                ofertac.setFechaCreacion(set.getString(6));
+                ofertac.setFechaInicio(set.getString(7));
+                ofertac.setFechaFinalizacion(set.getString(8));
+                ofertac.setPrecio(set.getInt(9));
+                ofertac.setTituloOferta(set.getString(10));
+                ofertac.setIdDisponible(set.getInt(11));
+                ofertac.setDescripcionOferta(set.getString(12));
+                ofertac.setRutaImagenPrincipal(set.getString(13));
+                ofertac.setCondiciones(set.getString(14));
+                ofertac.setNombreConsumidor(set.getString(15));
+                ofertac.setApellidoConsumidor(set.getString(16));
+                ofertac.setCorreoConsumidor(set.getString(17));
+                ofertac.setRecibirOferta(set.getInt(18));
+                lista.add(ofertac);
+            }
+            return lista;
+        }
+        return null;
+    }
 }

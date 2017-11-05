@@ -2,11 +2,13 @@
 package Controllers;
 import Entity.Consumidor;
 import Entity.Oferta;
+import Entity.OfertaCorreo;
 import Entity.Rubro;
 import Entity.Valoracion;
 import Models.OfertaModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class OfertaController {
@@ -109,5 +111,11 @@ public class OfertaController {
         String json = Helpers.JsonUtils.convertResultSetToJson(serOfertas);
         return json;
     }
+    public List<OfertaCorreo> selectOfertasPorEnviarCorreo() throws ClassNotFoundException, SQLException{
+        OfertaModel modelOferta = new OfertaModel();
+        List<OfertaCorreo> listaOfertas = modelOferta.selectOfertasPorEnviarCorreo();
+        return listaOfertas;
+       
+    } 
     
 }

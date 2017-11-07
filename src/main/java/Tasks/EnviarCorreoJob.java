@@ -1,6 +1,8 @@
 
 package Tasks;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.annotation.WebListener;
@@ -32,7 +34,9 @@ public class EnviarCorreoJob extends QuartzInitializerListener {
             scheduler.scheduleJob(job, trigger);
             scheduler.start();  
         } catch (Exception e) {
-            
+            //0 0/5 * 1/1 * ? *
+            //0 0 8 1/1 * ? *
+            Logger.getLogger(EnviarCorreoJob.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     

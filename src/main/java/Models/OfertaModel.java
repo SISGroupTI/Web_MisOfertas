@@ -3,6 +3,7 @@ package Models;
 
 import Entity.Consumidor;
 import Entity.Oferta;
+import Entity.OfertaBI;
 import Entity.OfertaCorreo;
 import Entity.Rubro;
 import Entity.Valoracion;
@@ -170,7 +171,7 @@ public class OfertaModel {
         stmt.execute();
         ResultSet set = (ResultSet)stmt.getObject(1);
         
-    List<OfertaCorreo> lista = new ArrayList<>();
+        List<OfertaCorreo> lista = new ArrayList<>();
         OfertaCorreo ofertac;
         if(set != null){
             while(set.next()){
@@ -198,5 +199,57 @@ public class OfertaModel {
             return lista;
         }
         return null;
+    }
+    
+    public List<OfertaBI> selectOfertasBI() throws ClassNotFoundException, SQLException{
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOferta = "{call SP_SELECT_OFERTAS_BI(?,?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOferta);
+        stmt.setDate(1, null);
+        stmt.setDate(2, null);
+        stmt.registerOutParameter(3,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(3);
+        
+        List<OfertaBI> lista = new ArrayList<>();
+        OfertaBI oferta;
+        if(set!=null){
+            while(set.next()){
+                oferta = new OfertaBI();
+                oferta.setEmpresa(set.getString(1));
+                oferta.setNumero_local(set.getInt(2));
+                oferta.setRubro(set.getString(3));
+                oferta.setId_oferta(set.getInt(4));
+                oferta.setTitulo_oferta(set.getString(6));
+                oferta.setPrecio_oferta(set.getInt(7));
+                oferta.setFecha_creacion(set.getString(8));
+                oferta.setFecha_publicacion(set.getString(9));
+                oferta.setFecha_publicacion(set.getString(10));
+                oferta.setValoraciones_negativas(set.getInt(11));
+                oferta.setValoraciones_medias(set.getInt(12));
+                oferta.setValoraciones_positivas(set.getInt(13));
+                oferta.setValoraciones_totales(set.getInt(14));
+                oferta.setProducto(set.getString(15));
+                oferta.setCantidad_visitas(set.getInt(16));
+            }
+        }
+        return null;
+        
+    }
+    
+    public ResultSet selectResultSetOfertasBI() throws ClassNotFoundException, SQLException{
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOferta = "{call SP_SELECT_OFERTA_BI_AUTO(?,?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOferta);
+        stmt.setDate(1, null);
+        stmt.setDate(2, null);
+        stmt.registerOutParameter(3,OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(3);
+        if(set!=null){
+             return set;
+        }
+        return null;
+        
     }
 }

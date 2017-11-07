@@ -1,6 +1,7 @@
 
 package Tasks;
 
+import Controllers.HistorialCorreoController;
 import Controllers.OfertaController;
 import Entity.OfertaCorreo;
 import static Tasks.TestMail.mensaje;
@@ -30,7 +31,6 @@ public class EnviarOfertasDestacatasJob implements Job{
 
     @Override
     public void execute(JobExecutionContext jec) throws JobExecutionException {
-
         final String username = "noreplymisofertas@gmail.com";
         final String password = "portafolio2017";
 
@@ -68,10 +68,9 @@ public class EnviarOfertasDestacatasJob implements Job{
                         messageBodyPart.setContent(mensaje(oferta), "text/html");
                         multipart.addBodyPart(messageBodyPart);
                         
-                         messageBodyPart = new MimeBodyPart();
+                        messageBodyPart = new MimeBodyPart();
                         ClassLoader classLoader = TestMail.class.getClassLoader();
                         String toString = classLoader.getResource("MisOfertas-sinLetras.png").getPath();
-                        System.out.println(toString);
                         DataSource fdsLogo = new FileDataSource(toString);
                         messageBodyPart.setDataHandler(new DataHandler(fdsLogo));
                         messageBodyPart.setHeader("Content-ID", "<imageLogo>");
@@ -85,7 +84,7 @@ public class EnviarOfertasDestacatasJob implements Job{
                         
                         message.setContent(multipart);
                         Transport.send(message);
-
+                        
                     }
                 } 
         } catch (MessagingException e) {
@@ -97,7 +96,7 @@ public class EnviarOfertasDestacatasJob implements Job{
     }
     
     
-    public static String mensaje(OfertaCorreo oferta){
+   public static String mensaje(OfertaCorreo oferta){
         String mensaje=""
         + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                         "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
@@ -121,7 +120,7 @@ public class EnviarOfertasDestacatasJob implements Job{
                         "				<div class=\"content\">\n" +
                         "					<table>\n" +
                         "					<tr>\n" +
-                        "						<td align=\"center\"><img src=\"cid:imageLogo\" /></td>\n" +
+                        "						<td style=\" text-align:center\"><img src=\"cid:imageLogo\" /></td>\n" +
                         "					</tr>\n" +
                         "				</table>\n" +
                         "				</div>\n" +

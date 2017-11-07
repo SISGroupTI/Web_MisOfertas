@@ -172,9 +172,9 @@ public class TesterController  {
     }*/
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-        CuponController con = new CuponController();
-        String aux = con.selectCuponVigente(5);
-        if(!aux.equals("[]")){
+        HistorialCorreoController con = new HistorialCorreoController();
+        boolean aux = con.RegistrarHistorialCorreo();
+        if(aux){
             System.out.println("valido");
         }else{
             System.out.println("no valido");

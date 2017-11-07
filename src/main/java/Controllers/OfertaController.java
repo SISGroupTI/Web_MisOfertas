@@ -2,6 +2,7 @@
 package Controllers;
 import Entity.Consumidor;
 import Entity.Oferta;
+import Entity.OfertaBI;
 import Entity.OfertaCorreo;
 import Entity.Rubro;
 import Entity.Valoracion;
@@ -117,5 +118,17 @@ public class OfertaController {
         return listaOfertas;
        
     } 
+    
+    public List<OfertaBI> selectOfertasBI() throws ClassNotFoundException, SQLException{
+        OfertaModel modelOferta = new OfertaModel();
+        List<OfertaBI> listaOfertas = modelOferta.selectOfertasBI();
+        return listaOfertas;
+    }
+    
+    public ResultSet selectResultSetOfertasBI() throws ClassNotFoundException, SQLException{
+        OfertaModel modelOferta = new OfertaModel();
+        ResultSet set = modelOferta.selectResultSetOfertasBI();
+        return set;
+    }
     
 }

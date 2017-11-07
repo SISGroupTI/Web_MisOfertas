@@ -44,7 +44,6 @@ Controllers\ConsumidorController.class
 Entity\Empresa.class
 Entity\Local.class
 Entity\Track.class
-Tasks\EnviarCorreoJob.class
 Entity\CertificadoRubro.class
 Entity\Permiso.class
 Entity\Oferta.class

@@ -132,7 +132,7 @@
                 const tbody = tabla.getElementsByTagName("tbody");
                 const boton = document.getElementById("descargarCupon");
                 boton.addEventListener("click", function () {
-                    mostrarDescuento(data[0]["ID_CERTIFICADO"]);
+                    verificarCuponGenerado(data[0]["ID_CERTIFICADO"]);
                 }, false);
                 for(var i = 1; i < data.length; i++){
                     const fila = document.createElement("tr");

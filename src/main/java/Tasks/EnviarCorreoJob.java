@@ -29,7 +29,7 @@ public class EnviarCorreoJob extends QuartzInitializerListener {
             Scheduler scheduler = factory.getScheduler();
             JobDetail job = JobBuilder.newJob(EnviarOfertasDestacatasJob.class).build();
             Trigger trigger = TriggerBuilder.newTrigger().withIdentity("simple").withSchedule(
-                    CronScheduleBuilder.cronSchedule("0 0 8 1/1 * ? *")
+                    CronScheduleBuilder.cronSchedule("0 0 8 ? * MON,TUE,WED,THU,FRI,SAT,SUN *")
             ).startNow().build();
             scheduler.scheduleJob(job, trigger);
             scheduler.start();  

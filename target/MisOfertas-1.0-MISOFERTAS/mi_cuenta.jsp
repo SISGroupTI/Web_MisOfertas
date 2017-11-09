@@ -80,14 +80,19 @@
                 </div>
                 <div class="form-group">
                     <label for="txtCrearContrasena">Contraseña*</label>
-                    <input type="password" class="form-control" id="txtCrearContrasena" placeholder="*************" required data-minlength="4" 
-                           data-required-error="Completa este campo" data-error="Mínimo 4 caracteres">
+                    <input type="password" class="form-control" id="txtCrearContrasena" pattern="^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$"
+                           placeholder="*************" required data-minlength="6" 
+                           data-pattern-error="La contraseña debe estar compuesta de al menos : 1 letra mayuscula, 1 numero y de minimo 6 caracteres"
+                           data-required-error="Completa este campo" data-error="Mínimo 6 caracteres">
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                     <label for="txtCrearVerificar" >Verificar contraseña*</label>
-                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************" required data-minlength="4" 
-                           data-required-error="Completa este campo" data-error="Mínimo 4 caracteres"
+                    <input type="password" class="form-control" id="txtCrearVerificar" placeholder="*************" 
+                           pattern="^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$"
+                           required data-minlength="6" 
+                           data-required-error="Completa este campo" data-error="Mínimo 6 caracteres"
+                           data-pattern-error="La contraseña debe estar compuesta de al menos : 1 letra mayuscula, 1 numero y de minimo 6 caracteres"
                            data-match="#txtCrearContrasena" data-match-error="Las contraseñas no coinciden">
                     <div class="help-block with-errors"></div>
                 </div>

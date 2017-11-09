@@ -295,7 +295,7 @@
             console.log(aux);
 
             for(var i = 0; i<aux ;i++){
-                var idOferta = data[i]["ID_OFERTA"];
+                let idOferta = data[i]["ID_OFERTA"];
                 titles[i].innerHTML = "<h4>"+data[i]["TITULO_OFERTA"]+"</h4>";
                 var imagen = imgOferta[i].children;
                 imagen[0].src = "MostrarImagenServlet?imageId="+data[i]["IMAGEN"];

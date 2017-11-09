@@ -47,9 +47,10 @@
                 </div>
                 <div class="form-group">
                     <label for="txtIngresoContrasena">Contraseña</label>
-                    <input type="password" class="form-control" id="txtIngresoContrasena" placeholder="*************" 
-                           data-minlength="4" data-required-error="Completa este campo" required
-                           data-error="Mínimo 4 caracteres">
+                    <input type="password" class="form-control" id="txtIngresoContrasena" pattern="^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$"
+                           placeholder="*************" data-minlength="6" data-required-error="Completa este campo" required
+                           data-pattern-error="La contraseña debe estar compuesta de al menos : 1 letra mayuscula, 1 numero y de minimo 6 caracteres" 
+                           data-error="Mínimo 6 caracteres">
                     <div class="help-block with-errors"></div>
                 </div>
                 <button type="button" id="btnIngresar" class="btn btn-success pull-right btningresar">Ingresar</button>

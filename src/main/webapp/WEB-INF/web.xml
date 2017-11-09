@@ -20,6 +20,10 @@
         <servlet-name>RubrosCantOfertasServlet</servlet-name>
         <servlet-class>Servlets.RubrosCantOfertasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerificarCuponGeneradoServlet</servlet-name>
+        <servlet-class>Servlets.VerificarCuponGeneradoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginConsumidorServlet</servlet-name>
         <url-pattern>/LoginConsumidorServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>RubrosCantOfertasServlet</servlet-name>
         <url-pattern>/RubrosCantOfertasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerificarCuponGeneradoServlet</servlet-name>
+        <url-pattern>/VerificarCuponGeneradoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

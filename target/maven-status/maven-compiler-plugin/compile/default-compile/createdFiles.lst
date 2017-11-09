@@ -9,6 +9,7 @@ Servlets\SelectConsumidorIdServlet.class
 Servlets\LogOutConsumidorServlet.class
 BD\TestConnection.class
 Servlets\ModificarConsumidorServlet.class
+Tasks\OfertasBIJob.class
 Servlets\RubrosCantOfertasDestacadoGeneralServlet.class
 Models\ConsumidorModel.class
 Servlets\SelectOfertaPorIdServlet.class
@@ -20,10 +21,12 @@ Entity\Producto.class
 Tasks\TestMail.class
 Controllers\TrackController.class
 Servlets\SelectOfertaDestacadaServlet.class
+Controllers\HistorialCorreoController.class
 Servlets\TrackRubroServlet.class
 Servlets\TrackOfertaServlet.class
 Servlets\SelectOfertaDestacadaRubroConsServlet.class
 Servlets\RubrosCantOfertasDestacadoConsumidorServlet.class
+Models\HistorialCorreoModel.class
 Servlets\CuponesGeneradosConsumidorServlet.class
 Models\TrackModel.class
 Helpers\BCrypt.class
@@ -44,6 +47,7 @@ Controllers\ConsumidorController.class
 Entity\Empresa.class
 Entity\Local.class
 Entity\Track.class
+Tasks\EnviarCorreoJob.class
 Entity\CertificadoRubro.class
 Entity\Permiso.class
 Entity\Oferta.class
@@ -58,11 +62,14 @@ Entity\Valoracion.class
 Servlets\SelectOfertaDestacadaGeneralServlet.class
 Entity\Trabajador.class
 Servlets\SelectOfertasRubroValConsServlet.class
+Entity\OfertaBI.class
 Servlets\SelectOfertasServlet.class
+Tasks\OfertasBIListener.class
 Servlets\RegisterConsumidorServlet.class
 BD\Conexion.class
 Servlets\RubrosCantOfertasServlet.class
 Servlets\SelectOfertasRubroValGenServlet.class
+Tasks\TestBI.class
 Servlets\LoginConsumidorServlet.class
 Servlets\SelectImagenesOfertaServlet.class
 Servlets\MostrarDescuentoServlet.class

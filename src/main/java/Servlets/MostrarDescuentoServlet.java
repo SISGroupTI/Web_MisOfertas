@@ -24,18 +24,14 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import java.awt.Desktop;
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,36 +71,23 @@ public class MostrarDescuentoServlet extends HttpServlet {
                 json = controller.setelectCuponPorId(idDescuento);
                 if(json!=null)
                 {
+                   
                     json = json.replace("[","");
                     json = json.replace("]", "");
                     Date dNow = new Date( );
                     SimpleDateFormat ft = 
                     new SimpleDateFormat ("yyyyMMddhhmmss");
-                    String ruta ="D:\\MisOfertas\\descuentos\\descuento"+ft.format(dNow)+".pdf";
+                    String home = System.getProperty("user.home");
+                    String ruta =home+"\\Downloads\\MisOfertasDescuento"+ft.format(dNow)+".pdf";
                     response.setHeader("Content-Disposition","inline;filename=" + ruta);
                     File file = new File(ruta);
                     file.getParentFile().mkdirs();
                     Document doc = manipulatePdf(ruta,json);
+                    controller.updateCuponGenerado(idDescuento, 1);
                     Desktop.getDesktop().open(new File(ruta));
                     response.getWriter().write( ruta );
+
                 }
-                // step 2
-                /*File nfsPDF = new File(ruta);
-                FileInputStream fis = new FileInputStream(nfsPDF);
-                BufferedInputStream bis = new BufferedInputStream(fis);
-                ServletOutputStream sos = response.getOutputStream();
-                byte[] buffer = new byte[2048];
-                while (true) {
-                    int bytesRead = bis.read(buffer, 0, buffer.length);
-                    if (bytesRead < 0) {
-                      break;
-                    }
-                    sos.write(buffer, 0, bytesRead);
-                    sos.flush();
-                }
-                sos.flush();
-                bis.close();*/
-                
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(CuponesGeneradosConsumidorServlet.class.getName()).log(Level.SEVERE, null, ex);
             } 
@@ -125,7 +108,10 @@ public class MostrarDescuentoServlet extends HttpServlet {
         title.setBold();
         title.setFontSize(24);
         doc.add(title);
-        ImageData image = ImageDataFactory.create("D:\\Ian Cardenas\\Documentos\\Web MisOfertas\\src\\main\\webapp\\img\\logos\\rsz_misofertas-letras.png");
+        
+        ClassLoader classLoader = MostrarDescuentoServlet.class.getClassLoader();
+        
+        ImageData image = ImageDataFactory.create(classLoader.getResource("MisOfertas-sinLetras.png").getPath());
         Image imageModel = new Image(image);
         AffineTransform at = AffineTransform.getTranslateInstance(470, 750);
         at.concatenate(AffineTransform.getScaleInstance(imageModel.getImageScaledWidth(),
@@ -154,8 +140,8 @@ public class MostrarDescuentoServlet extends HttpServlet {
             table.addCell(jSONObject.getString("FECHA_EMISION"));
             table.addCell(jSONObject.getString("RUBROS_DISPONIBLES"));
             table.addCell(""+jSONObject.getInt("PUNTOS"));
-            table.addCell("%"+jSONObject.getDouble("DESCUENTO"));
-            table.addCell("$ "+jSONObject.getInt("TOPE"));
+            table.addCell(jSONObject.getDouble("DESCUENTO")+"%");
+            table.addCell("$"+jSONObject.getInt("TOPE"));
         }   
         Cell nombreLbl = new Cell(1, 10).add(new Paragraph("NOMBRE: "));
         nombreLbl.setTextAlignment(TextAlignment.LEFT);

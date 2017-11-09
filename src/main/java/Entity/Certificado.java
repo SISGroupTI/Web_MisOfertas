@@ -29,6 +29,7 @@ public class Certificado {
    /** @pdOid 611eecbf-1d8c-4086-a9c9-405f97d8e3b4 */
    public java.util.Date fechaEmision;
    
+   public int is_generado;
    /** @pdRoleInfo migr=no name=CertificadoRubro assc=reference32 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection<CertificadoRubro> certificadoRubro;
    /** @pdRoleInfo migr=no name=Consumidor assc=reference14 mult=1..1 side=A */
@@ -192,4 +193,13 @@ public class Certificado {
       }
    }
 
+    public int getIs_generado() {
+        return is_generado;
+    }
+
+    public void setIs_generado(int is_generado) {
+        this.is_generado = is_generado;
+    }
+
+   
 }

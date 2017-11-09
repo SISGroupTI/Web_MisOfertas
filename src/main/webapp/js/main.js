@@ -143,34 +143,44 @@ function modificarCuenta(idConsumidor){
     }
 }
 function toRubros(idRubro){
-    var id = idRubro;
-   
-    window.location.href='rubros.jsp?Id='+id;
-     
+    window.location.href='rubros.jsp?Id='+idRubro; 
 }
 function toRubrosRegistrarTrack(idRubro,idConsumidor){
     var id = idRubro;
     var idCons = idConsumidor;
-    //alert("idRubro: "+id+" idCons"+idCons);
+  
     $.post("/MisOfertas/TrackRubroServlet",{
         idRubro:id,
         idConsumidor:idCons
     },function(data){
-        console.log(data);
+        
     });
     window.location.href='rubros.jsp?Id='+id;
 }
 function mostrarDescuento(idCertificado){
-    //alert(""+idCertificado);
     $.post("/MisOfertas/MostrarDescuentoServlet",{
         idCertificado:idCertificado
     },function(data){
-        
-        console.log("esta es mi data "+ data);
     });
 }
 
-
+function verificarCuponGenerado(idCertificado){
+    $.post("/MisOfertas/VerificarCuponGeneradoServlet",{
+        idCertificado:idCertificado
+    },function(data){
+        var estado = data; 
+        if(data==="disponible"){
+            mostrarDescuento(idCertificado);
+        }else{
+            swal(
+            'Solo es posible generar un cup&oacute;n de descuento por mes',
+            '',
+            'error'
+          );
+        }
+    });
+    
+}
 //------------------------------VALIDAR RUT-----------------------------------
 function checkRut(rut) {
     // Despejar Puntos
@@ -291,6 +301,9 @@ function validarDatosCrearCuenta(){
     var regOnlyLetters=new RegExp("^[a-zA-Z_áéíóúñ\s]*$");
     var regEmail = new RegExp("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$");
     var regRut=new RegExp("^([0-9]+-[0-9K])$");
+    var myRegexp = /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$/g;
+    var myRegexp1 = /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$/g;
+    var regPassword = new RegExp("^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$");
     
     
     var nombre = document.getElementById("txtCrearNombre").value;
@@ -302,15 +315,12 @@ function validarDatosCrearCuenta(){
     
     var cont = 0;
     if(!regOnlyLetters.test(nombre)){
-        
         cont+=1;
     }
     if(!regOnlyLetters.test(apellido)){
-        
         cont+=1;
     }
     if(!regEmail.test(correo)){
-        
         cont+=1;
     }
     if(contrasena==="" || verificarContrasena===""){
@@ -318,6 +328,13 @@ function validarDatosCrearCuenta(){
     }else{
         if(contrasena!==verificarContrasena){ 
             cont+=1;
+        }else{
+            if(!myRegexp.exec(contrasena)){
+                cont+=1;
+            }
+            if(!myRegexp1.exec(verificarContrasena)){
+                cont+=1;
+            }  
         }
     }  
     if(!regRut.test(rut)){
@@ -332,14 +349,23 @@ function validarDatosCrearCuenta(){
 
 function validarDatosIngresarCuenta(){
     var regEmail = new RegExp("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$");
-    let correo = document.getElementById("txtIngresoCorreo").value;
-    let password = document.getElementById("txtIngresoContrasena").value;
+    var regPassword = new RegExp("^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$");
+    var correo = document.getElementById("txtIngresoCorreo").value;
+    var password = document.getElementById("txtIngresoContrasena").value;
+    
+    var myRegexp = /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[0-9]){1})\S{6,}$/g;
+    
     var cont = 0;
     if(!regEmail.test(correo)){
         cont+=1;
     }
     if(password===""){
         cont+=1;
+    }else{
+        if(!myRegexp.exec(password)){
+            cont+=1;
+        }
+       
     }
     return (cont===0);
 }

@@ -1,16 +1,13 @@
 
 package Models;
 
-import BD.Conexion;
+import Entity.Certificado;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import oracle.jdbc.internal.OracleTypes;
-import oracle.jdbc.oracore.OracleType;
 
 
 
@@ -49,6 +46,29 @@ public class CuponModel {
         Connection con = BD.Conexion.getConnection();
         CallableStatement stmt = con.prepareCall(spSelectCupones);
         stmt.setInt(1, (int)consumidor.getIdConsumidor());
+        stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet setCupones = (ResultSet) stmt.getObject(2);
+        if(setCupones!=null){
+            return setCupones;
+        }          
+        return null;
+    }
+    public boolean updateCuponGenerado(Certificado certificado) throws ClassNotFoundException, SQLException{
+        String updateCupon = "call SP_UPDATE_CUPON_GENERADO(?,?)";
+        Connection con = BD.Conexion.getConnection();
+        CallableStatement stmt = con.prepareCall(updateCupon);
+        stmt.setInt(1, (int)certificado.getIdCertificado());
+        stmt.setInt(2, certificado.getIs_generado());
+        stmt.execute();
+        return (stmt.getUpdateCount()>0);
+    }
+    
+    public ResultSet selectVerificarCuponGenerado(Certificado certificado) throws ClassNotFoundException, SQLException{
+        String verificarCupon = "call SP_SELECT_VERIFICARCUPONGEN(?,?)";
+        Connection con = BD.Conexion.getConnection();
+        CallableStatement stmt = con.prepareCall(verificarCupon);
+        stmt.setInt(1, (int)certificado.getIdCertificado());
         stmt.registerOutParameter(2, OracleTypes.CURSOR);
         stmt.execute();
         ResultSet setCupones = (ResultSet) stmt.getObject(2);

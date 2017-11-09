@@ -4,6 +4,7 @@ package Controllers;
 import Entity.Certificado;
 import Entity.Consumidor;
 import Models.CuponModel;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -56,5 +57,28 @@ public class CuponController {
         CuponModel cuponModel = new CuponModel();
         String json = Helpers.JsonUtils.convertResultSetToJson(cuponModel.selectCuponVigente(consumidor));
         return json;
+    }
+    
+    public boolean updateCuponGenerado(int idCertificado, int isGenerado) throws ClassNotFoundException, SQLException{
+        Certificado certificado = new Certificado();
+        certificado.setIdCertificado((long)idCertificado);
+        certificado.setIs_generado(isGenerado);
+        CuponModel cuponModel = new CuponModel();
+        return cuponModel.updateCuponGenerado(certificado);
+    }
+    
+    public boolean selectVerificarCuponGenerado(int idCertificado) throws ClassNotFoundException, ClassNotFoundException, SQLException{
+        Certificado certificado = new Certificado();
+        certificado.setIdCertificado((long)idCertificado);
+        CuponModel cuponModel = new CuponModel();
+        ResultSet setCupon = cuponModel.selectVerificarCuponGenerado(certificado);
+        if(setCupon!=null){
+            while(setCupon.next()){
+                if(setCupon.getInt(2)==1){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

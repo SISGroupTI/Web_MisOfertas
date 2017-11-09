@@ -9,7 +9,7 @@ C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Detalle
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertaDestacadaGeneralServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Escala.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\HistorialCorreo.java
-C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Tasks\EnviarCorreoListener.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\HistorialCorreoController.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Entity\Producto.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\OfertaController.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Controllers\TrackController.java
@@ -35,7 +35,9 @@ C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\Selec
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Tasks\OfertasBIJob.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertasPorRubroServelet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertaDestacadaRubroConsServlet.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Tasks\EnviarCorreoJob.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\ValoracionModel.java
+C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\HistorialCorreoModel.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\TrackModel.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Servlets\SelectOfertasServlet.java
 C:\Users\Seba\Documents\NetBeansProjects\MisOfertas\src\main\java\Models\RubroModel.java

@@ -47,7 +47,7 @@
                             <div class="panel-body">
                                 <div class="container-fluid">
                                     <div clas="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h3 class="tituloOferta">
                                                 <!--Pack de 3 o 6 botellas de 1,9 litros de Ariel concentrado Power Liquid. Incluye despacho-->
                                             </h3>
@@ -204,6 +204,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 file-loading">
                                         <input type="file" id="upload" class="btn btn-primary" accept="image/*"/>
                                     </div>
+                                    <div id="errorBlock" class="help-block"></div>
                                 </div>
                                 <br>
                                 <!--<div class="row">
@@ -271,10 +272,20 @@
 
                 xhr.onloadstart = function () {
                   console.log('Empieza la subida de: ', files.name);
+                  swal(
+                    'Valoraci&oacute;n realizada exitosamente',
+                    'Gracias por usar MisOfertas',
+                    'success'
+                  );
                 };
 
                 xhr.onerror = function (e) {
                   console.log( 'Algo fue mal en la subida :(' );
+                  swal(
+                    'Ha ocurrido un error',
+                    'Por favor, intenta nuevamente',
+                    'error'
+                  );
                 };
 
                 data.append('file', files, files.name);
@@ -300,9 +311,15 @@
                 showUpload: false,
                 minFileCount: 1,
                 maxFileCount: 1,
-                uploadAsync: true
-                //allowedFileTypes: ['*.jpg']
+                uploadAsync: true,
+                allowedFileExtensions: ["jpg", "jpeg", "gif", "png"],
+                elErrorContainer: "#errorBlock"
             });
+            
+            $("#upload").on('fileselect', function(event, numFiles, label){
+                console.log("fileselect"+label);
+            });
+            
             $(document).ready(function () {
                 const oferta = findGetParameter("Oferta");
                 const slides = document.getElementById("cantidadImagenes");

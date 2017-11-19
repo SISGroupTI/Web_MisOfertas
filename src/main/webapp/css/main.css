@@ -113,7 +113,7 @@ img {
 }
 
 .img-center {margin:0 auto;}
-
+.colorMenu{color: #f2f2f2;}
 /* sm */
 @media (min-width: 320px) and (max-width: 767px) {
     .row {
@@ -134,7 +134,7 @@ img {
     }
     .btningresar { width: 100%}
     .btncupon { width: 70%}
-    .imgLogo{ width: 13%}
+    .imgLogo{ width: 16%}
     .img404{  width: 50%}
     .imgEstrellas{width:50%}
     .imgBoleta{width:200%}
@@ -151,7 +151,7 @@ img {
     .autosized .label { font-size: 23px; }
     .btningresar { width: 100%}
     .btncupon { width: 70%}
-    .imgLogo{ width: 15%}
+    .imgLogo{ width: 23%}
     .img404{  width: 35%}
     .imgEstrellas{width:40%}
     .imgBoleta{width:200%}
@@ -166,7 +166,7 @@ img {
     .autosized .label { font-size: 25px; }
     .btningresar { width: 100%}
     .btncupon { width: 40%}
-    .imgLogo{ width: 15%}
+    .imgLogo{ width: 20%}
     .img404{  width: 20%}
     .imgEstrellas{width:40%}
     .imgBoleta{width:200%}

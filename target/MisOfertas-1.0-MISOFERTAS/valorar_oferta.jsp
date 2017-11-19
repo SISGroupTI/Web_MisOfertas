@@ -312,7 +312,7 @@
                 minFileCount: 1,
                 maxFileCount: 1,
                 uploadAsync: true,
-                allowedFileExtensions: ["jpg", "jpeg", "gif", "png"],
+                allowedFileExtensions: ["jpg", "jpeg",  "png"],
                 elErrorContainer: "#errorBlock"
             });
             

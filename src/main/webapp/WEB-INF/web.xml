@@ -24,6 +24,10 @@
         <servlet-name>VerificarCuponGeneradoServlet</servlet-name>
         <servlet-class>Servlets.VerificarCuponGeneradoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SelectOfertasServletConsumidor</servlet-name>
+        <servlet-class>Servlets.SelectOfertasServletConsumidor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginConsumidorServlet</servlet-name>
         <url-pattern>/LoginConsumidorServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>VerificarCuponGeneradoServlet</servlet-name>
         <url-pattern>/VerificarCuponGeneradoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectOfertasServletConsumidor</servlet-name>
+        <url-pattern>/SelectOfertasServletConsumidor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

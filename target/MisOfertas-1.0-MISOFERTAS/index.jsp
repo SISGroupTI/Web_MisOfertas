@@ -270,29 +270,62 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/vendor/sweetalert2.min.js"></script>
         <script>
-            /*
-             * ----BORRAR DESPUES-----------
-             * 
-             * para consultar y procesar informacion desde servlets se debe invocar utilizando
-             * consultas ajax por jquery
-             * 
-             * $.post("rutaServlet",{
-             *  //PARAMETROS A ENVIAR
-             *     parametro1: valor, // el nombre del parametro debe ser igual al nombre del parametro que se obtiene desde el servlet
-             *     parametro2:valor2
-             *     
-             * 
-             * },function(data){
-             *      //data = corresponde al objeto de respuesta luego de ejecutar el servlet
-             *      console.log(data); //permite ver el contenido
-             * });
-             * 
-             */
+
 
             $(document).ready(function () {
                 <%
                     if(session.getAttribute("idConsumidor")!=null){
                 %>
+                    $.post("SelectOfertasServletConsumidor", {
+                        idConsumidor:<%=session.getAttribute("idConsumidor")%>
+                    }, function (data) {
+                    const titles = document.getElementsByClassName("titleOferta");
+                    const imgOferta = document.getElementsByClassName("imgOferta");
+                    const priceOferta = document.getElementsByClassName("priceOferta");
+
+                    console.log(data);
+                    //MEJORAR CONDICION
+                    const aux = (titles.length === data.length) ? data.length : data.length;
+                    //console.log(aux);
+
+                    for (var i = 0; i <= aux; i++) {
+                        let idRubro = data[i]["ID_RUBRO"];
+                        let idOferta = data[i]["ID_OFERTA"];
+                        titles[i].innerHTML = "<h4>" + data[i]["TITULO_OFERTA"] + "</h4>";
+                        var imagen = imgOferta[i].children;
+                        
+                        imagen[0].src = "MostrarImagenServlet?imageId="+data[i]["IMAGEN"];
+                        var price = priceOferta[i].children;
+                        price[0].innerHTML = "<h4>Desde: " + separarMiles(data[i]["PRECIO"]) + "</h4>";
+                        <%
+                            if(session.getAttribute("idConsumidor")==null){
+                        %>
+                            price[1].addEventListener("click", function () {
+                                window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
+                            }, false);
+                        <%
+                            }else{
+                        %>
+                            price[1].addEventListener("click",function(){
+                                var id =<%=session.getAttribute("idConsumidor")%>
+                                $.post("TrackOfertaServlet",{
+                                  idOferta: idOferta,
+                                  idConsumidor:id,
+                                  idRubro: idRubro
+                                },function(data){
+                                   console.log(data);
+                                });
+                            },false);
+                            price[1].addEventListener("click", function () {
+                                window.location.href = 'valorar_oferta.jsp?Oferta=' + idOferta;
+                            }, false);
+                        <%
+                            }
+                        %>
+                    }
+                });    
+                        
+                        
                     var tituloDestacado = document.getElementById("tituloDestacado");
                     var precioDestacado = document.getElementById("precioDestacado");
                     var btnValorarDestacado = document.getElementById("btnValorarDestacado");
@@ -354,11 +387,8 @@
                             listRubros.innerHTML += button;
                         });
                     });
-                <%
-                    }
-                %>
-                
-                $.post("SelectOfertasServlet", {}, function (data) {
+                    
+                    $.post("SelectOfertasServlet", {}, function (data) {
                     const titles = document.getElementsByClassName("titleOferta");
                     const imgOferta = document.getElementsByClassName("imgOferta");
                     const priceOferta = document.getElementsByClassName("priceOferta");
@@ -404,6 +434,12 @@
                         %>
                     }
                 });
+                    
+                <%
+                    }
+                %>
+                
+                
                 $.post("RubrosCantOfertasServlet", {}, function (data) {
                     var listRubros = document.getElementById("listRubros");
                     $.each(data, function (key, value) {

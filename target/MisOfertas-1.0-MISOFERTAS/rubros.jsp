@@ -301,11 +301,29 @@
                 imagen[0].src = "MostrarImagenServlet?imageId="+data[i]["IMAGEN"];
                 var price = priceOferta[i].children;
                     price[0].innerHTML = "<h4>"+separarMiles(data[i]["PRECIO"])+"</h4>";
-                    price[1].addEventListener("click", function(){
-                        //alert(idOferta);
+        <%
+            if(session.getAttribute("idConsumidor")!=null){
+        %>
+            price[1].addEventListener("click", function(){
+                        var id =<%=session.getAttribute("idConsumidor")%>
+                        $.post("TrackOfertaServlet",{
+                          idOferta: data[i]["ID_OFERTA"],
+                          idConsumidor:id,
+                          idRubro:data[i]["ID_RUBRO"]
+                        },function(data){
+                            console.log(data);
+                        });   
                         window.location.href = 'valorar_oferta.jsp?Oferta='+idOferta;
-
-                    }, false);
+               }, false);  
+        <%
+            }else{
+        %>                
+            price[1].addEventListener("click", function(){
+                   window.location.href = 'valorar_oferta.jsp?Oferta='+idOferta;
+               }, false);
+        <%
+            }
+        %>                   
             }
 
         });       
@@ -331,6 +349,7 @@
                 tituloDestacado.innerHTML=data[0]["TITULO_OFERTA"];
                 precioDestacado.innerHTML="Desde: "+separarMiles(data[0]["PRECIO"]);
                 btnValorarDestacado.addEventListener("click",function(){
+                   
                         var id =<%=session.getAttribute("idConsumidor")%>
                         $.post("TrackOfertaServlet",{
                           idOferta: idOferta,

@@ -30,6 +30,22 @@ public class OfertaModel {
         return null;
         
     }
+    public ResultSet selectOfertasConsumidor(Consumidor consumidor) throws ClassNotFoundException, SQLException{
+        Connection con = BD.Conexion.getConnection();
+        String spSelectOferta = "{call SP_LISTAR_FECHA_TRACK_CONS(?,?)}";
+        CallableStatement stmt = con.prepareCall(spSelectOferta);
+        stmt.setInt(1, (int) consumidor.getIdConsumidor());
+        stmt.registerOutParameter(2, OracleTypes.CURSOR);
+        stmt.execute();
+        ResultSet set = (ResultSet)stmt.getObject(2);
+        if(set!=null){
+            return set;
+        }
+        return null;
+        
+    }
+    
+    
     public ResultSet selectOfertaPorId(Oferta oferta) throws ClassNotFoundException, SQLException{
         Connection con = BD.Conexion.getConnection();
         String spSelectOfertaId = "{call SP_SELECT_OFERTA_POR_ID_CONS(?,?)}";

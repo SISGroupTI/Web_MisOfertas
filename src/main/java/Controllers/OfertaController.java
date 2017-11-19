@@ -20,6 +20,15 @@ public class OfertaController {
         String json = Helpers.JsonUtils.convertResultSetToJson(setOfertas);
         return json;
     }
+    public String selectOfertasConsumidor(int idConsumidor) throws ClassNotFoundException, SQLException{
+        Consumidor consumidor = new Consumidor();
+        consumidor.setIdConsumidor(idConsumidor);
+        
+        OfertaModel modelOferta = new OfertaModel();
+        ResultSet setOfertas = modelOferta.selectOfertasConsumidor(consumidor);
+        String json = Helpers.JsonUtils.convertResultSetToJson(setOfertas);
+        return json;
+    }
     public String selectOfertaPorId(Long idOferta) throws ClassNotFoundException, SQLException{
         Entity.Oferta oferta = new Oferta();
         oferta.setIdOferta(idOferta);

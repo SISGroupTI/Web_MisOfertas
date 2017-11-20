@@ -37,10 +37,13 @@ public class VerificarCuponGeneradoServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int idCertificado = Integer.parseInt(request.getParameter("idCertificado"));
             CuponController controller = new CuponController();
-            if(controller.selectVerificarCuponGenerado(idCertificado)){
+            if(controller.selectVerificarCuponGenerado(idCertificado)==2){
                 response.getWriter().write("generado");
-            }else{
+            }else if(controller.selectVerificarCuponGenerado(idCertificado)==1){
                 response.getWriter().write("disponible");
+            }
+            else if(controller.selectVerificarCuponGenerado(idCertificado)==3){
+                response.getWriter().write("nohaycupon");
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VerificarCuponGeneradoServlet.class.getName()).log(Level.SEVERE, null, ex);

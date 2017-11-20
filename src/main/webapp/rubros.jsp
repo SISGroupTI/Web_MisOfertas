@@ -307,7 +307,7 @@
             price[1].addEventListener("click", function(){
                         var id =<%=session.getAttribute("idConsumidor")%>
                         $.post("TrackOfertaServlet",{
-                          idOferta: data[i]["ID_OFERTA"],
+                          idOferta: idOferta,//data[i]["ID_OFERTA"],
                           idConsumidor:id,
                           idRubro:data[i]["ID_RUBRO"]
                         },function(data){

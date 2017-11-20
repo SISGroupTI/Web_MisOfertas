@@ -67,18 +67,21 @@ public class CuponController {
         return cuponModel.updateCuponGenerado(certificado);
     }
     
-    public boolean selectVerificarCuponGenerado(int idCertificado) throws ClassNotFoundException, ClassNotFoundException, SQLException{
+    public int selectVerificarCuponGenerado(int idCertificado) throws ClassNotFoundException, ClassNotFoundException, SQLException{
         Certificado certificado = new Certificado();
         certificado.setIdCertificado((long)idCertificado);
         CuponModel cuponModel = new CuponModel();
         ResultSet setCupon = cuponModel.selectVerificarCuponGenerado(certificado);
         if(setCupon!=null){
             while(setCupon.next()){
-                if(setCupon.getInt(2)==1){
-                    return true;
+                if(setCupon.getInt(2)==1 && setCupon.getInt(3)==1){ //cupon generado previamente
+                    return 2;
+                }
+                else if(setCupon.getInt(3)==0){//cupon no disponible debido a que no corresponde al mes actual
+                    return 3;
                 }
             }
         }
-        return false;
+        return 1; //cupon disponible para generar
     }
 }

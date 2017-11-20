@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mis Ofertas - Ingresar</title>
+    <title>Mis Ofertas - Descuentos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -124,6 +124,7 @@
         var date = new Date();
         var fechaActual = document.getElementById("fechaActual");
         fechaActual.innerHTML="Disponible para el mes de "+monthNames[date.getMonth()]+" de "+date.getUTCFullYear();
+        
         $.post("CuponesGeneradosConsumidorServlet",{
         },function(data){
             if(data !== null){

@@ -171,11 +171,18 @@ function verificarCuponGenerado(idCertificado){
         var estado = data; 
         if(data==="disponible"){
             mostrarDescuento(idCertificado);
-        }else{
+        }else if(data==="generado"){
             swal(
             'Solo es posible generar un cup&oacute;n de descuento por mes',
             '',
             'error'
+          );
+        }
+        else if(data==="nohaycupon"){
+            swal(
+            'No tienes puntos para generar un cup&oacute;n de descuento',
+            'Compra productos con nuestras ofertas y valoralas para generar puntos',
+            'info'
           );
         }
     });

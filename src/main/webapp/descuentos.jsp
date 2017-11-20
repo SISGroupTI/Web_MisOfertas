@@ -132,10 +132,15 @@
                 const tabla = document.getElementById("datatableDescuentos");
                 const tbody = tabla.getElementsByTagName("tbody");
                 const boton = document.getElementById("descargarCupon");
-                boton.addEventListener("click", function () {
-                    verificarCuponGenerado(data[0]["ID_CERTIFICADO"]);
-                }, false);
-                for(var i = 1; i < data.length; i++){
+                var contador = 0;
+                if(data[0]["ISMESACTUAL"]===1){
+                    contador = 1;
+                }
+                 boton.addEventListener("click", function () {
+                        verificarCuponGenerado(data[0]["ID_CERTIFICADO"]);
+                    }, false);
+                
+                for(var i = contador; i < data.length; i++){
                     const fila = document.createElement("tr");
                     var date = new Date(data[i]["FECHA_EMISION"]);
                     var idCertificado= data[i]["ID_CERTIFICADO"];

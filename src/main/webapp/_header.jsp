@@ -12,7 +12,7 @@
             <br>
             <br>
             <a href="index.jsp"><img src="img/logos/MisOfertas-sinLetras.png" alt="" class="imgLogo" align="left"></a>
-            <a href="index.jsp" class="navbar-brand navbar-link"><span class="colorMenu">Mis Ofertas</span> </a>
+            <a href="index.jsp" class="navbar-brand navbar-link"><span class="colorMenu sizeTitle">Mis Ofertas</span> </a>
             <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 
         </div>
@@ -40,7 +40,7 @@
             <br>
             <br>
             <img src="img/logos/MisOfertas-sinLetras.png" alt="" class="imgLogo" align="left">
-            <a href="index.jsp" class="navbar-brand navbar-link colorMenu"><span class="colorMenu">Mis Ofertas</span></a>
+            <a href="index.jsp" class="navbar-brand navbar-link colorMenu"><span class="colorMenu sizeTitle">Mis Ofertas</span></a>
             <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 
         </div>

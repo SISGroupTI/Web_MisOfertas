@@ -48,7 +48,7 @@ function cerrar_sesion(){
             swal({
                 title: 'Sesion cerrada',
                 text: 'Redireccionando a la pagina principal',
-                timer: 1000
+                timer: 500
               }).then(
                 function () {},
                 // handling the promise rejection
